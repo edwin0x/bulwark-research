@@ -10,33 +10,58 @@ See `docs/business-overview.md` for the full business context.
 
 ## Tech Stack
 
-- **Framework:** Astro (static site generator)
+- **Monorepo:** Turborepo with bun workspaces
+- **Web framework:** TanStack Start (full-stack React, Vinxi/Vite-based)
+- **Routing:** TanStack Router (file-based, type-safe)
+- **API:** Hono (lightweight, edge-first)
 - **Styling:** Tailwind CSS v4 (using `@theme` block for design tokens, not `tailwind.config`)
+- **Linting/Formatting:** Biome (single config at monorepo root)
 - **Package manager:** bun
+- **Language:** TypeScript (strict mode)
 - **Fonts:** Space Grotesk (headings), Playfair Display italic (accent), Manrope (body), JetBrains Mono (code/labels)
-- **Build:** `npx astro build` → outputs to `dist/`
-- **Preview:** `npx serve dist -l <port>`
 
 ## Project Structure
 
 ```
-src/
-├── layouts/
-│   └── Layout.astro          # Shared HTML shell — fonts, meta, scroll-reveal script
-├── pages/
-│   ├── index.astro            # Homepage — hero, problem, manifesto, how-it-works, bento, report preview, pricing, FAQ, CTA
-│   └── pricing.astro          # Standalone pricing page — cards, comparison table, FAQ, CTA
-└── styles/
-    └── global.css             # Design system — @theme tokens, animations, utility classes
-docs/
-└── business-overview.md       # Business context, pricing model, positioning, target audience
+bulwark-research/
+├── apps/
+│   ├── web/                          # TanStack Start marketing site
+│   │   ├── src/
+│   │   │   ├── routes/
+│   │   │   │   ├── __root.tsx        # Root layout (HTML shell, fonts, grain)
+│   │   │   │   ├── index.tsx         # Homepage route
+│   │   │   │   └── pricing.tsx       # Pricing route
+│   │   │   ├── components/           # React components (kebab-case files)
+│   │   │   ├── data/                 # Shared data (plans, agents, steps)
+│   │   │   ├── hooks/                # React hooks (use-scroll-reveal)
+│   │   │   ├── styles/
+│   │   │   │   └── global.css        # Design system (@theme tokens, animations)
+│   │   │   └── router.tsx            # TanStack Router config
+│   │   ├── public/                   # Static assets (favicons)
+│   │   └── vite.config.ts            # TanStack Start + Tailwind v4 plugins
+│   │
+│   └── api/                          # Hono API placeholder
+│       └── src/
+│           └── index.ts              # Health check endpoint (port 3001)
+│
+├── packages/
+│   └── tsconfig/                     # Shared TypeScript configs
+│       ├── base.json                 # Strict base (ES2022, bundler resolution)
+│       ├── react.json                # React apps (extends base)
+│       └── node.json                 # Node/API apps (extends base)
+│
+├── turbo.json                        # Turborepo task pipeline
+├── biome.json                        # Biome linting/formatting config
+├── package.json                      # Root workspace config
+└── docs/
+    └── business-overview.md
 ```
 
 ---
 
 ## Design System
 
-### Colors (defined in `global.css` `@theme` block)
+### Colors (defined in `apps/web/src/styles/global.css` `@theme` block)
 
 | Token | Value | Usage |
 |---|---|---|
@@ -74,7 +99,7 @@ docs/
 | `.section-title` | Section headings (Space Grotesk, tight leading) |
 | `.text-gradient` | Paper-to-muted gradient text |
 | `.text-gradient-warm` | Vermillion-to-amber gradient text |
-| `.reveal` | Scroll-triggered fade-up animation (via IntersectionObserver in Layout.astro) |
+| `.reveal` | Scroll-triggered fade-up animation (via `useScrollReveal` hook) |
 | `.delay-{1-8}` | Stagger animation delays (0.1s increments) |
 | `.grain` | Film grain overlay (applied to `<body>`) |
 
@@ -90,14 +115,19 @@ Credit-based, **no subscriptions**. This is a deliberate product decision.
 | Pro | $299 | One-time credit pack (10 deep research credits, never expire) |
 | Lifetime | $599 | One-time, 10 deep researches/month forever |
 
-The plans data is defined as a `const plans` array in the frontmatter of both `index.astro` and `pricing.astro`. Keep them in sync when modifying.
+Plans data lives in `apps/web/src/data/plans.ts` — single source of truth for both pages.
 
 ---
 
 ## Conventions
 
 ### File Naming
-- Use **kebab-case** for all file names (e.g., `business-overview.md`, not `BUSINESS_OVERVIEW.md`)
+- Use **kebab-case** for all file names (e.g., `pricing-cards.tsx`, not `PricingCards.tsx`)
+
+### Monorepo
+- Internal packages use `@bulwark/` scope (e.g., `@bulwark/tsconfig`, `@bulwark/web`)
+- Workspace dependencies use `workspace:*` protocol
+- Turborepo orchestrates builds/dev — use `turbo run <task>` from root
 
 ### CSS
 - All design tokens live in `global.css` under `@theme` — Tailwind v4 auto-generates utility classes from these
@@ -105,9 +135,10 @@ The plans data is defined as a `const plans` array in the frontmatter of both `i
 - New colors/fonts must be added to the `@theme` block to work as Tailwind utilities
 
 ### Components
-- This is a static Astro site — no client-side framework (React, Vue, etc.)
-- Interactive behavior uses vanilla `<script>` tags in Layout.astro or page files
-- The scroll-reveal system uses IntersectionObserver — add `.reveal` class to trigger fade-up on scroll
+- React components in `apps/web/src/components/` — named exports, kebab-case files
+- Scroll reveal uses `useScrollReveal()` hook — wrap page content in a div with `ref={revealRef}`
+- Internal routing uses TanStack `<Link>` component, hash links use regular `<a>` tags
+- Shared data in `apps/web/src/data/` — typed exports with interfaces
 
 ### Content
 - Copy should be concise, high-conviction, and avoid generic AI/startup jargon
@@ -116,10 +147,10 @@ The plans data is defined as a `const plans` array in the frontmatter of both `i
 - Time to deliver is **30 minutes** (not 5 minutes) — be consistent across all copy
 
 ### Pages
-- `index.astro` contains the full homepage including a pricing section preview
-- `pricing.astro` is the dedicated pricing page with comparison table and pricing-specific FAQ
-- Both pages share the same `Layout.astro` wrapper and `global.css` design system
-- Navigation links between pages use absolute paths (`/pricing`, `/#how-it-works`)
+- `routes/index.tsx` contains the full homepage including a pricing section preview
+- `routes/pricing.tsx` is the dedicated pricing page with comparison table and pricing-specific FAQ
+- Both pages share the same `__root.tsx` layout and `global.css` design system
+- Navigation links between pages use TanStack `<Link>` for routes, `<a>` for hash anchors
 
 ---
 
@@ -129,12 +160,22 @@ The plans data is defined as a `const plans` array in the frontmatter of both `i
 # Install dependencies
 bun install
 
-# Build
-npx astro build
+# Dev (all apps in parallel)
+turbo run dev
 
-# Preview locally
-npx serve dist -l 4321
+# Build (all apps)
+turbo run build
 
-# Dev server (hot reload)
-npx astro dev
+# Lint (Biome)
+turbo run lint
+
+# Type check
+turbo run check
+
+# Format
+biome format --write .
+
+# Dev single app
+cd apps/web && bun run dev
+cd apps/api && bun run dev
 ```
