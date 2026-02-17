@@ -19,7 +19,7 @@ export function Hero() {
 					className="overline-divider max-w-sm mx-auto mb-6 animate-fade-in"
 					style={{ animationDelay: '0.1s' }}
 				>
-					The Last Human Moat
+					Research Preview Available Now
 				</div>
 
 				{/* Headline */}
