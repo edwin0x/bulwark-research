@@ -13,6 +13,11 @@ export function PricingCards() {
 							Most Popular
 						</span>
 					)}
+					{plan.badge && (
+						<span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-ink-light border border-amber/20 backdrop-blur-xl font-mono text-[10px] text-amber uppercase tracking-widest whitespace-nowrap">
+							{plan.badge}
+						</span>
+					)}
 
 					<div className="mb-6">
 						<h3 className="font-serif text-xl font-semibold mb-1">{plan.name}</h3>
@@ -20,10 +25,18 @@ export function PricingCards() {
 					</div>
 
 					<div className="mb-8">
-						<span className="font-serif text-4xl font-bold">
-							{plan.price === '0' ? 'Free' : `$${plan.price}`}
-						</span>
-						{plan.price !== '0' && <span className="text-sm text-dim ml-1">{plan.period}</span>}
+						{plan.freeForNow ? (
+							<>
+								<span className="font-serif text-4xl font-bold">Free</span>
+								<span className="text-sm text-dim ml-2 line-through">${plan.price}</span>
+								<div className="text-xs text-emerald font-mono uppercase tracking-wider mt-1">Limited time offer</div>
+							</>
+						) : (
+							<>
+								<span className="font-serif text-4xl font-bold">${plan.price}</span>
+								<span className="text-sm text-dim ml-1">{plan.period}</span>
+							</>
+						)}
 					</div>
 
 					<ul className="space-y-3 mb-8 flex-1">

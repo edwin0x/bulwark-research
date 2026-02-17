@@ -6,14 +6,18 @@ export interface Plan {
 	features: string[]
 	cta: string
 	featured: boolean
+	/** Show strikethrough price with "Free" label */
+	freeForNow?: boolean
+	/** Badge text like "5 slots left" */
+	badge?: string
 }
 
 export const plans: Plan[] = [
 	{
 		name: 'Recon',
-		price: '0',
-		period: 'no commitment',
-		desc: 'One complimentary research dossier — on the house',
+		price: '99',
+		period: 'one-time',
+		desc: 'One full research dossier — free while we launch',
 		features: [
 			'1 full research engagement',
 			'Market size analysis',
@@ -23,6 +27,7 @@ export const plans: Plan[] = [
 		],
 		cta: 'Hire Us — Free',
 		featured: false,
+		freeForNow: true,
 	},
 	{
 		name: 'Deployment',
@@ -50,10 +55,10 @@ export const plans: Plan[] = [
 			'All Deployment deliverables',
 			'Lifetime command access',
 			'Priority turnaround',
-			'White-label deliverables',
 			'Dedicated research desk',
 		],
 		cta: 'Take Command',
 		featured: false,
+		badge: 'Few slots left',
 	},
 ]

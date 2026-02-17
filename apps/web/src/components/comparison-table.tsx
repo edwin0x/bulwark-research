@@ -26,9 +26,9 @@ const rows: Array<{
 	},
 	{
 		feature: 'Investment',
-		recon: <span className="text-dim">Free — no commitment</span>,
-		deployment: '$299/year',
-		command: '$599 one-time',
+		recon: <span className="text-dim">Free (normally $99)</span>,
+		deployment: '$499/year',
+		command: '$999 one-time',
 	},
 	{
 		feature: 'Agent swarm analysis',
@@ -58,12 +58,6 @@ const rows: Array<{
 		feature: 'Investor-grade deliverables',
 		recon: <span className="text-dim">&mdash;</span>,
 		deployment: <CheckIcon />,
-		command: <CheckIcon />,
-	},
-	{
-		feature: 'White-label deliverables',
-		recon: <span className="text-dim">&mdash;</span>,
-		deployment: <span className="text-dim">&mdash;</span>,
 		command: <CheckIcon />,
 	},
 	{
