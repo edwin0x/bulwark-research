@@ -1,16 +1,17 @@
 {
-  "name": "startup-idea-validator",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "bulwark-research",
+  "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "check": "turbo run check",
+    "format": "biome format --write ."
   },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.17.1",
-    "tailwindcss": "^4.1.18"
-  }
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "turbo": "^2.4.4"
+  },
+  "packageManager": "bun@1.2.0",
+  "workspaces": ["apps/*", "packages/*"]
 }
