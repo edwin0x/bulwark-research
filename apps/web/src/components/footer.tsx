@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import { BulwarkIcon } from './bulwark-icon'
 
 export function Footer() {
 	return (
@@ -8,19 +9,7 @@ export function Footer() {
 					{/* Brand */}
 					<div className="col-span-2 md:col-span-1">
 						<div className="flex items-center gap-2.5">
-							<svg
-								className="w-7 h-7"
-								viewBox="0 0 32 32"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									fillRule="evenodd"
-									d="M6 8V6H9V4h2v2h3V3.5L16 1.5l2 2V6h3V4h2v2h3v2c0 9-4 16-10 21C10 24 6 17 6 8zm3 1.5c0 7.5 3 13 7 16.5 4-3.5 7-9 7-16.5z"
-									fill="currentColor"
-								/>
-								<path d="M16 9.5h7c0 7.5-3 13-7 16.5z" fill="var(--color-vermillion)" />
-							</svg>
+							<BulwarkIcon className="w-7 h-7" />
 							<span
 								className="text-[18px] tracking-[0.06em] uppercase leading-none"
 								style={{ fontFamily: "'Archivo Black', sans-serif" }}

@@ -1,3 +1,5 @@
+import { BulwarkIcon } from './bulwark-icon'
+
 export function Manifesto() {
 	return (
 		<section className="relative py-28 px-6 overflow-hidden">
@@ -49,19 +51,7 @@ export function Manifesto() {
 				<div className="mt-16 pt-12 border-t border-ink-border reveal delay-6">
 					<div className="flex flex-col md:flex-row items-center gap-8">
 						<div className="flex-shrink-0">
-							<svg className="w-14 h-14" viewBox="0 0 32 32" fill="none">
-								<path
-									fillRule="evenodd"
-									d="M6 8V6H9V4h2v2h3V3.5L16 1.5l2 2V6h3V4h2v2h3v2c0 9-4 16-10 21C10 24 6 17 6 8zm3 1.5c0 7.5 3 13 7 16.5 4-3.5 7-9 7-16.5z"
-									fill="var(--color-vermillion)"
-									opacity="0.3"
-								/>
-								<path
-									d="M16 9.5h7c0 7.5-3 13-7 16.5z"
-									fill="var(--color-vermillion)"
-									opacity="0.5"
-								/>
-							</svg>
+							<BulwarkIcon className="w-14 h-14" fill="var(--color-vermillion)" opacity={0.4} />
 						</div>
 						<blockquote className="text-xl md:text-2xl font-accent italic text-gradient-warm leading-relaxed">
 							"We don't tell you what to build. We give you the intelligence to decide for yourself
