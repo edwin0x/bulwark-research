@@ -110,8 +110,8 @@ function SignInPage() {
 					style={{ animationDelay: '0.3s' }}
 				>
 					Don't have an account?{' '}
-					<Link to="/" hash="hero-input" className="text-paper hover:text-vermillion transition-colors">
-						Commission research
+					<Link to="/portal/onboarding" className="text-paper hover:text-vermillion transition-colors">
+						Get started
 					</Link>
 				</p>
 			</div>
