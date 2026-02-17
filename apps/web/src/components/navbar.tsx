@@ -12,7 +12,7 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 	const hashPrefix = isHome ? '' : '/'
 
 	return (
-		<nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-ink/80 backdrop-blur-xl">
+		<nav className="fixed top-0 left-0 right-0 z-50 border-b border-black/5 bg-ink/80 backdrop-blur-xl">
 			<div className="mx-auto max-w-6xl px-6 flex items-center justify-between h-16">
 				{/* Logo */}
 				<Link to="/" className="flex items-center gap-2.5 group shrink-0">
@@ -83,7 +83,7 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 			<div
 				className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${menuOpen ? 'max-h-80' : 'max-h-0'}`}
 			>
-				<div className="px-6 pb-6 pt-2 border-t border-white/5 flex flex-col gap-4 text-sm">
+				<div className="px-6 pb-6 pt-2 border-t border-black/5 flex flex-col gap-4 text-sm">
 					<Link
 						to="/about"
 						onClick={() => setMenuOpen(false)}

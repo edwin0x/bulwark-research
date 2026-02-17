@@ -30,7 +30,7 @@ export function HowItWorks() {
 								<div className="inline-flex items-center gap-3 mb-6">
 									<span className="font-mono text-xs text-dim tracking-widest">{step.mono}</span>
 									<span className="w-8 h-px bg-ink-border" />
-									<span className="font-serif text-5xl font-bold text-white/10">{step.num}</span>
+									<span className="font-serif text-5xl font-bold text-black/8">{step.num}</span>
 								</div>
 
 								<h3 className="font-serif text-xl font-semibold mb-3">{step.title}</h3>

@@ -63,19 +63,22 @@ bulwark-research/
 
 ### Colors (defined in `apps/web/src/styles/global.css` `@theme` block)
 
+**Light theme** — the site uses a warm off-white background with dark text.
+
 | Token | Value | Usage |
 |---|---|---|
-| `--color-ink` | `#09090b` | Background |
-| `--color-ink-light` | `#141416` | Card backgrounds |
-| `--color-ink-border` | `#2a2a2e` | Borders, dividers |
-| `--color-paper` | `#fafaf9` | Primary text |
-| `--color-ivory` | `#e8e8e3` | Secondary text |
-| `--color-muted` | `#a1a09a` | Muted text |
-| `--color-dim` | `#6f6d66` | Subtle text, labels |
-| `--color-vermillion` | `#e5484d` | Primary accent (CTAs, highlights) |
-| `--color-amber` | `#ffb224` | Secondary accent |
-| `--color-emerald` | `#46a758` | Success states |
-| `--color-cyan` | `#00a2c7` | Info accents |
+| `--color-ink` | `#fafaf9` | Background (light) |
+| `--color-ink-light` | `#f0f0ee` | Card backgrounds |
+| `--color-ink-mid` | `#e8e8e3` | Mid-level backgrounds |
+| `--color-ink-border` | `#d4d4cf` | Borders, dividers |
+| `--color-paper` | `#09090b` | Primary text (dark) |
+| `--color-ivory` | `#1c1c1f` | Secondary text |
+| `--color-muted` | `#6f6d66` | Muted text |
+| `--color-dim` | `#a1a09a` | Subtle text, labels |
+| `--color-vermillion` | `#dc3d43` | Primary accent (CTAs, highlights) |
+| `--color-amber` | `#d9940a` | Secondary accent |
+| `--color-emerald` | `#2d8a3e` | Success states |
+| `--color-cyan` | `#0089a8` | Info accents |
 
 ### Font System
 

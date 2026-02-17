@@ -2,20 +2,20 @@
 
 /* ── Design System ─────────────────────────────── */
 @theme {
-	--color-ink: #09090b;
-	--color-ink-light: #141416;
-	--color-ink-mid: #1c1c1f;
-	--color-ink-border: #2a2a2e;
-	--color-paper: #fafaf9;
-	--color-ivory: #e8e8e3;
-	--color-muted: #a1a09a;
-	--color-dim: #6f6d66;
-	--color-vermillion: #e5484d;
-	--color-vermillion-glow: #e5484d33;
+	--color-ink: #fafaf9;
+	--color-ink-light: #f0f0ee;
+	--color-ink-mid: #e8e8e3;
+	--color-ink-border: #d4d4cf;
+	--color-paper: #09090b;
+	--color-ivory: #1c1c1f;
+	--color-muted: #6f6d66;
+	--color-dim: #a1a09a;
+	--color-vermillion: #dc3d43;
+	--color-vermillion-glow: #dc3d4322;
 	--color-vermillion-dark: #c4383c;
-	--color-amber: #ffb224;
-	--color-emerald: #46a758;
-	--color-cyan: #00a2c7;
+	--color-amber: #d9940a;
+	--color-emerald: #2d8a3e;
+	--color-cyan: #0089a8;
 
 	--font-serif: "Space Grotesk", "Inter", sans-serif;
 	--font-accent: "Playfair Display", "Georgia", serif;
@@ -132,7 +132,7 @@ body {
 	pointer-events: none;
 	z-index: 9999;
 	animation: var(--animate-grain);
-	opacity: 0.5;
+	opacity: 0.35;
 }
 
 /* ── Overline with flanking lines ─────────────── */
@@ -168,14 +168,14 @@ body {
 
 /* ── Glass Card ────────────────────────────────── */
 .card-glass {
-	background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
 	border: 1px solid var(--color-ink-border);
 	backdrop-filter: blur(12px);
 	transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 .card-glass:hover {
-	border-color: rgba(229, 72, 77, 0.3);
-	box-shadow: 0 0 40px rgba(229, 72, 77, 0.06);
+	border-color: rgba(220, 61, 67, 0.35);
+	box-shadow: 0 0 40px rgba(220, 61, 67, 0.08);
 	transform: translateY(-2px);
 }
 
@@ -234,7 +234,7 @@ body {
 }
 .btn-outline:hover {
 	border-color: var(--color-muted);
-	background: rgba(255, 255, 255, 0.04);
+	background: rgba(0, 0, 0, 0.04);
 }
 
 /* ── Scroll-Triggered Animations ───────────────── */
@@ -283,14 +283,14 @@ body {
 
 /* ── Report Mockup ─────────────────────────────── */
 .report-glow {
-	box-shadow: 0 0 80px rgba(229, 72, 77, 0.08), 0 0 160px rgba(229, 72, 77, 0.04), 0 32px 64px
-		rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 80px rgba(220, 61, 67, 0.06), 0 0 160px rgba(220, 61, 67, 0.03), 0 32px 64px
+		rgba(0, 0, 0, 0.08);
 }
 
 /* ── Pricing Card Active ───────────────────────── */
 .pricing-active {
 	border-color: var(--color-vermillion) !important;
-	box-shadow: 0 0 60px var(--color-vermillion-glow), 0 24px 48px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 0 60px var(--color-vermillion-glow), 0 24px 48px rgba(0, 0, 0, 0.08);
 }
 
 /* ── Radial Glow ───────────────────────────────── */

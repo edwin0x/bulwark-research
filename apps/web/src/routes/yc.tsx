@@ -48,7 +48,7 @@ function YcLandingPage() {
 	return (
 		<div ref={revealRef}>
 			{/* ── Minimal Header ─────────────────────────── */}
-			<header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-ink/80 backdrop-blur-xl">
+			<header className="fixed top-0 left-0 right-0 z-50 border-b border-black/5 bg-ink/80 backdrop-blur-xl">
 				<div className="mx-auto max-w-6xl px-6 flex items-center h-16">
 					<Link to="/" className="flex items-center gap-2.5">
 						<BulwarkIcon className="w-7 h-7" />
@@ -74,7 +74,7 @@ function YcLandingPage() {
 	
 				{/* Floating background text */}
 				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
-					<span className="font-serif text-[12vw] font-bold text-white/[0.015] whitespace-nowrap">
+					<span className="font-serif text-[12vw] font-bold text-black/[0.03] whitespace-nowrap">
 						DILIGENCE
 					</span>
 				</div>
@@ -263,7 +263,7 @@ function YcLandingPage() {
 											STEP
 										</span>
 										<span className="w-8 h-px bg-ink-border" />
-										<span className="font-serif text-5xl font-bold text-white/10">
+										<span className="font-serif text-5xl font-bold text-black/8">
 											{step.num}
 										</span>
 									</div>

@@ -204,7 +204,7 @@ function OnboardingPage() {
 											</svg>
 										</button>
 										{roleDropdownOpen && (
-											<div className="absolute z-20 mt-2 w-full rounded-2xl border border-ink-border overflow-hidden overflow-y-auto max-h-52 shadow-lg shadow-black/50 backdrop-blur-none" style={{ backgroundColor: '#09090b' }}>
+											<div className="absolute z-20 mt-2 w-full rounded-2xl border border-ink-border overflow-hidden overflow-y-auto max-h-52 shadow-lg shadow-black/10 backdrop-blur-none bg-ink">
 												{ROLE_OPTIONS.map((option) => (
 													<button
 														key={option}
@@ -213,7 +213,7 @@ function OnboardingPage() {
 															setRoleSelection(option)
 															setRoleDropdownOpen(false)
 														}}
-														className={`w-full px-4 py-2.5 text-sm text-left transition-colors hover:bg-white/5 ${
+														className={`w-full px-4 py-2.5 text-sm text-left transition-colors hover:bg-black/5 ${
 															roleSelection === option ? 'text-vermillion' : 'text-paper'
 														}`}
 													>
@@ -227,7 +227,7 @@ function OnboardingPage() {
 														setRoleSelection('Other')
 														setRoleDropdownOpen(false)
 													}}
-													className={`w-full px-4 py-2.5 text-sm text-left transition-colors hover:bg-white/5 ${
+													className={`w-full px-4 py-2.5 text-sm text-left transition-colors hover:bg-black/5 ${
 														roleSelection === 'Other' ? 'text-vermillion' : 'text-muted'
 													}`}
 												>
