@@ -16,10 +16,16 @@ export function Hero() {
 			<div className="relative z-10 max-w-4xl mx-auto text-center">
 				{/* Overline */}
 				<div
-					className="overline-divider max-w-sm mx-auto mb-6 animate-fade-in"
+					className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-emerald/20 bg-emerald/5 backdrop-blur-sm mb-6 animate-fade-in"
 					style={{ animationDelay: '0.1s' }}
 				>
-					Research Preview Available Now
+					<span className="relative flex h-2 w-2">
+						<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald opacity-75" />
+						<span className="relative inline-flex rounded-full h-2 w-2 bg-emerald" />
+					</span>
+					<span className="font-mono text-[11px] tracking-[0.15em] uppercase text-emerald">
+						Research Preview Available Now
+					</span>
 				</div>
 
 				{/* Headline */}
