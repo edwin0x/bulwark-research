@@ -50,12 +50,6 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 					>
 						How it works
 					</a>
-					<a
-						href={`${hashPrefix}#what-you-get`}
-						className="hover:text-paper transition-colors duration-200"
-					>
-						What you get
-					</a>
 					<Link
 						to="/pricing"
 						className={`${activePage === 'pricing' ? 'text-paper' : 'hover:text-paper'} transition-colors duration-200`}

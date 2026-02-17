@@ -13,9 +13,9 @@ export const plans: Plan[] = [
 		name: 'Free',
 		price: '0',
 		period: 'forever',
-		desc: '10 validations every month, on us',
+		desc: '1 free validation, on us',
 		features: [
-			'10 validations/month',
+			'1 validation, forever',
 			'Market size analysis',
 			'Top 5 competitors',
 			'Basic risk score',

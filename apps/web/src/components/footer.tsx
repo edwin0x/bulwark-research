@@ -52,11 +52,6 @@ export function Footer() {
 								</a>
 							</li>
 							<li>
-								<a href="#what-you-get" className="hover:text-paper transition-colors">
-									What you get
-								</a>
-							</li>
-							<li>
 								<Link to="/pricing" className="hover:text-paper transition-colors">
 									Pricing
 								</Link>
