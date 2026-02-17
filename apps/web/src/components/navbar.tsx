@@ -56,6 +56,12 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 					>
 						Pricing
 					</Link>
+					<Link
+						to="/sample-report"
+						className={`${activePage === 'sample-report' ? 'text-paper' : 'hover:text-paper'} transition-colors duration-200`}
+					>
+						Sample Report
+					</Link>
 					<a href={`${hashPrefix}#faq`} className="hover:text-paper transition-colors duration-200">
 						FAQ
 					</a>
@@ -76,7 +82,7 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 						Sign in
 					</Link>
 					<a href={`${hashPrefix}#hero-input`} className="btn-glow px-5 py-2 text-sm">
-						Validate an Idea
+						Request a Briefing
 					</a>
 				</div>
 			</div>
