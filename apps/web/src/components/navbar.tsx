@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 
 interface NavbarProps {
-	activePage?: 'home' | 'pricing' | 'sample-report'
+	activePage?: 'home' | 'pricing' | 'sample-report' | 'about'
 }
 
 export function Navbar({ activePage = 'home' }: NavbarProps) {
@@ -29,7 +29,7 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 					</svg>
 					{/* Name */}
 					<span
-						className="text-[14px] tracking-[0.06em] uppercase"
+						className="text-[18px] tracking-[0.06em] uppercase leading-none"
 						style={{ fontFamily: "'Archivo Black', sans-serif" }}
 					>
 						Bulwark{' '}
@@ -56,15 +56,15 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 					>
 						Pricing
 					</Link>
-					<Link
-						to="/sample-report"
-						className={`${activePage === 'sample-report' ? 'text-paper' : 'hover:text-paper'} transition-colors duration-200`}
-					>
-						Sample Report
-					</Link>
 					<a href={`${hashPrefix}#faq`} className="hover:text-paper transition-colors duration-200">
 						FAQ
 					</a>
+					<Link
+						to="/about"
+						className={`${activePage === 'about' ? 'text-paper' : 'hover:text-paper'} transition-colors duration-200`}
+					>
+						About
+					</Link>
 				</div>
 
 				{/* CTA */}
