@@ -13,7 +13,7 @@ export function Hero() {
 			</div>
 
 			{/* Content */}
-			<div className="relative z-10 max-w-3xl mx-auto text-center">
+			<div className="relative z-10 max-w-4xl mx-auto text-center">
 				{/* Overline */}
 				<div
 					className="overline-divider max-w-sm mx-auto mb-6 animate-fade-in"
