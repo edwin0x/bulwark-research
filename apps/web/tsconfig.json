@@ -1,10 +1,10 @@
 {
-  "extends": "@bulwark/tsconfig/react.json",
-  "compilerOptions": {
-    "paths": {
-      "~/*": ["./src/*"]
-    },
-    "tsBuildInfoFile": "./node_modules/.cache/tsbuildinfo.json"
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts"]
+	"extends": "@bulwark/tsconfig/react.json",
+	"compilerOptions": {
+		"paths": {
+			"~/*": ["./src/*"]
+		},
+		"tsBuildInfoFile": "./node_modules/.cache/tsbuildinfo.json"
+	},
+	"include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts"]
 }
