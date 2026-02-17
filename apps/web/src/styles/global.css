@@ -1,0 +1,292 @@
+@import "tailwindcss";
+
+/* ── Design System ─────────────────────────────── */
+@theme {
+  --color-ink: #09090b;
+  --color-ink-light: #141416;
+  --color-ink-mid: #1c1c1f;
+  --color-ink-border: #2a2a2e;
+  --color-paper: #fafaf9;
+  --color-ivory: #e8e8e3;
+  --color-muted: #a1a09a;
+  --color-dim: #6f6d66;
+  --color-vermillion: #e5484d;
+  --color-vermillion-glow: #e5484d33;
+  --color-vermillion-dark: #c4383c;
+  --color-amber: #ffb224;
+  --color-emerald: #46a758;
+  --color-cyan: #00a2c7;
+
+  --font-serif: 'Space Grotesk', 'Inter', sans-serif;
+  --font-accent: 'Playfair Display', 'Georgia', serif;
+  --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Menlo', monospace;
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.6s ease both;
+  --animate-scale-in: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-slide-right: slide-right 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-grain: grain 0.5s steps(1) infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slide-right {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-2%, -2%); }
+  20% { transform: translate(2%, 2%); }
+  30% { transform: translate(-1%, 3%); }
+  40% { transform: translate(3%, -1%); }
+  50% { transform: translate(-3%, 1%); }
+  60% { transform: translate(1%, -3%); }
+  70% { transform: translate(-2%, 2%); }
+  80% { transform: translate(2%, -2%); }
+  90% { transform: translate(-1%, 1%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ── Base ──────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-vermillion);
+  color: white;
+}
+
+/* ── Grain Overlay ─────────────────────────────── */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: var(--animate-grain);
+  opacity: 0.5;
+}
+
+/* ── Overline Label ────────────────────────────── */
+.overline {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-vermillion);
+}
+
+/* ── Overline with flanking lines ─────────────── */
+.overline-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-dim);
+}
+.overline-divider::before,
+.overline-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-ink-border));
+}
+.overline-divider::after {
+  background: linear-gradient(90deg, var(--color-ink-border), transparent);
+}
+
+/* ── Section Headline ──────────────────────────── */
+.section-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* ── Glass Card ────────────────────────────────── */
+.card-glass {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid var(--color-ink-border);
+  backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-glass:hover {
+  border-color: rgba(229, 72, 77, 0.3);
+  box-shadow: 0 0 40px rgba(229, 72, 77, 0.06);
+  transform: translateY(-2px);
+}
+
+/* ── Gradient Text ─────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-paper) 0%, var(--color-muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, var(--color-vermillion) 0%, var(--color-amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glow Button ───────────────────────────────── */
+.btn-glow {
+  position: relative;
+  background: var(--color-vermillion);
+  color: white;
+  font-weight: 600;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--color-vermillion), var(--color-amber));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(12px);
+}
+.btn-glow:hover {
+  background: var(--color-vermillion-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px var(--color-vermillion-glow);
+}
+.btn-glow:hover::before {
+  opacity: 1;
+}
+
+/* ── Outline Button ────────────────────────────── */
+.btn-outline {
+  border: 1px solid var(--color-ink-border);
+  color: var(--color-paper);
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  border-color: var(--color-muted);
+  background: rgba(255,255,255,0.04);
+}
+
+/* ── Scroll-Triggered Animations ───────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Divider ───────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-ink-border) 50%, transparent 100%);
+}
+
+/* ── Stagger Delays ────────────────────────────── */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+.delay-7 { transition-delay: 0.7s; }
+.delay-8 { transition-delay: 0.8s; }
+
+/* ── Report Mockup ─────────────────────────────── */
+.report-glow {
+  box-shadow:
+    0 0 80px rgba(229, 72, 77, 0.08),
+    0 0 160px rgba(229, 72, 77, 0.04),
+    0 32px 64px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Pricing Card Active ───────────────────────── */
+.pricing-active {
+  border-color: var(--color-vermillion) !important;
+  box-shadow: 0 0 60px var(--color-vermillion-glow), 0 24px 48px rgba(0,0,0,0.4);
+}
+
+/* ── Subtle Grid Background ────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Radial Glow ───────────────────────────────── */
+.hero-glow {
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, var(--color-vermillion-glow) 0%, transparent 70%);
+}
+
+/* ── Number Counter ────────────────────────────── */
+.stat-num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+/* ── Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dim);
+}
