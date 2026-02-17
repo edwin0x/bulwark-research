@@ -26,22 +26,19 @@ function SignInPage() {
 
 	return (
 		<div className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-			{/* Background effects */}
-			<div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-vermillion/4 rounded-full blur-[200px] pointer-events-none" />
-
 			{/* Content */}
 			<div className="relative z-10 w-full max-w-sm">
 				{/* Logo */}
 				<Link to="/" className="flex items-center justify-center gap-2.5 mb-12 group animate-fade-in">
 					<BulwarkIcon className="w-8 h-8" />
 					<span
-						className="text-[20px] tracking-[0.06em] uppercase leading-none"
-						style={{ fontFamily: "'Archivo Black', sans-serif" }}
+						className="text-[20px] tracking-[0.04em] uppercase leading-none"
+						style={{ fontFamily: "'Instrument Sans', sans-serif", fontWeight: 700 }}
 					>
 						Bulwark{' '}
 						<span
-							className="text-muted"
-							style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 400 }}
+							className="text-dim"
+							style={{ fontFamily: "'IBM Plex Mono', monospace", fontWeight: 400, letterSpacing: '0.08em' }}
 						>
 							Research
 						</span>
@@ -52,16 +49,16 @@ function SignInPage() {
 				<div className="text-center mb-8 animate-fade-up" style={{ animationDelay: '0.1s' }}>
 					<h1 className="section-title text-3xl sm:text-4xl mb-2">
 						Sign in to your{' '}
-						<span className="italic font-accent text-gradient-warm">portal</span>
+						<span className="text-secondary">portal</span>
 					</h1>
-					<p className="text-sm text-muted">
+					<p className="text-sm text-secondary">
 						Access your research dossiers and engagement history.
 					</p>
 				</div>
 
 				{/* Sign In Card */}
 				<div
-					className="card-glass p-8 rounded-2xl animate-fade-up"
+					className="bp-card p-8 animate-fade-up"
 					style={{ animationDelay: '0.2s' }}
 				>
 					<form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -76,7 +73,7 @@ function SignInPage() {
 								placeholder="you@company.com"
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
-								className="w-full px-4 py-3 rounded-full bg-ink-light border border-ink-border text-paper text-sm placeholder:text-dim focus:outline-none focus:border-vermillion/50 transition-colors"
+								className="w-full px-4 py-3 bg-surface border border-border text-ink text-sm placeholder:text-dim focus:outline-none focus:border-signal/50 transition-colors"
 							/>
 						</div>
 						<div>
@@ -90,15 +87,15 @@ function SignInPage() {
 								placeholder="••••••••"
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
-								className="w-full px-4 py-3 rounded-full bg-ink-light border border-ink-border text-paper text-sm placeholder:text-dim focus:outline-none focus:border-vermillion/50 transition-colors"
+								className="w-full px-4 py-3 bg-surface border border-border text-ink text-sm placeholder:text-dim focus:outline-none focus:border-signal/50 transition-colors"
 							/>
 						</div>
 						<div className="flex justify-end">
-							<a href="#" className="text-xs text-dim hover:text-muted transition-colors">
+							<a href="#" className="text-xs text-dim hover:text-secondary transition-colors">
 								Forgot password?
 							</a>
 						</div>
-						<button type="submit" className="btn-glow w-full px-7 py-3 text-sm">
+						<button type="submit" className="btn-signal w-full px-7 py-3 text-sm">
 							Sign In
 						</button>
 					</form>
@@ -106,11 +103,11 @@ function SignInPage() {
 
 				{/* Below card */}
 				<p
-					className="text-center text-sm text-muted mt-8 animate-fade-up"
+					className="text-center text-sm text-secondary mt-8 animate-fade-up"
 					style={{ animationDelay: '0.3s' }}
 				>
 					Don't have an account?{' '}
-					<Link to="/portal/onboarding" className="text-paper hover:text-vermillion transition-colors">
+					<Link to="/portal/onboarding" className="text-ink hover:text-signal transition-colors">
 						Get started
 					</Link>
 				</p>
@@ -118,7 +115,7 @@ function SignInPage() {
 
 			{/* Bottom link back to site */}
 			<div className="absolute bottom-8 text-center animate-fade-in" style={{ animationDelay: '0.5s' }}>
-				<Link to="/" className="text-xs text-dim hover:text-muted transition-colors">
+				<Link to="/" className="text-xs text-dim hover:text-secondary transition-colors">
 					&larr; Back to bulwarkresearch.com
 				</Link>
 			</div>

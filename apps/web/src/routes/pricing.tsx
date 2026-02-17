@@ -1,5 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { BlueprintSection } from '~/components/blueprint-section'
 import { ComparisonTable } from '~/components/comparison-table'
+import { Cta } from '~/components/cta'
 import { Faq } from '~/components/faq'
 import { Footer } from '~/components/footer'
 import { Navbar } from '~/components/navbar'
@@ -52,26 +54,23 @@ function PricingPage() {
 			<Navbar activePage="pricing" />
 
 			{/* Pricing Hero */}
-			<section className="relative pt-40 pb-24 px-6 overflow-hidden">
-				{/* Background */}
-				<div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-vermillion/5 rounded-full blur-[160px] pointer-events-none" />
-
-				<div className="relative z-10 max-w-6xl mx-auto">
-					<div className="text-center mb-20">
-						<div className="overline-divider max-w-xs mx-auto mb-4 animate-fade-in">Engagements</div>
+			<section className="pt-32 pb-20 px-6">
+				<div className="max-w-6xl mx-auto">
+					<div className="text-center mb-16">
+						<span className="font-mono text-[10px] text-dim tracking-[0.08em] uppercase block mb-4 animate-slide-in" style={{ animationDelay: '0.3s' }}>
+							// Engagements
+						</span>
 						<h1
-							className="section-title text-4xl sm:text-5xl md:text-6xl mb-6 animate-fade-up"
-							style={{ animationDelay: '0.1s' }}
+							className="section-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 animate-slide-in"
+							style={{ animationDelay: '0.4s' }}
 						>
-							Big 4 rigor.
+							BIG 4 RIGOR.
 							<br />
-							<span className="italic font-accent text-gradient-warm">
-								Founder-friendly rates.
-							</span>
+							<span className="text-secondary">FOUNDER-FRIENDLY RATES.</span>
 						</h1>
 						<p
-							className="text-lg text-muted max-w-xl mx-auto animate-fade-up"
-							style={{ animationDelay: '0.2s' }}
+							className="text-lg text-secondary max-w-xl mx-auto animate-slide-in"
+							style={{ animationDelay: '0.5s' }}
 						>
 							Your first engagement is complimentary — a full research dossier delivered to your
 							inbox within 24 hours. No commitment, no strings.
@@ -86,29 +85,24 @@ function PricingPage() {
 			<ComparisonTable />
 
 			{/* FAQ */}
-			<section className="relative py-24 px-6">
-				<div className="max-w-2xl mx-auto">
-					<div className="text-center mb-16">
-						<div className="overline-divider max-w-xs mx-auto mb-4 reveal">FAQ</div>
-						<h2 className="section-title text-3xl sm:text-4xl reveal delay-1">Common questions</h2>
-					</div>
+			<BlueprintSection number="02" title="FAQ">
+				<div className="max-w-2xl">
 					<Faq faqs={faqs} />
 				</div>
-			</section>
+			</BlueprintSection>
 
-			{/* Still not sure? CTA */}
-			<section className="relative py-24 px-6">
-				<div className="relative z-10 max-w-2xl mx-auto text-center">
-					<h2 className="section-title text-2xl sm:text-3xl mb-4 reveal">Still deciding?</h2>
-					<p className="text-muted mb-8 reveal delay-1">
-						Your first engagement is on us. A full research dossier delivered to your inbox within
-						24 hours — no commitment, no obligation.
-					</p>
-					<a href="/#hero-input" className="btn-glow px-8 py-3.5 text-sm reveal delay-2">
-						Hire Us — It's Free
-					</a>
-				</div>
-			</section>
+			{/* CTA */}
+			<Cta
+				overline="// Still deciding?"
+				title={
+					<>
+						YOUR FIRST ENGAGEMENT IS ON US.
+					</>
+				}
+				subtitle="A full research dossier delivered to your inbox within 24 hours — no commitment, no obligation."
+				primaryLabel="Hire Us — It's Free"
+				primaryHref="/#hero-input"
+			/>
 
 			<Footer />
 		</div>

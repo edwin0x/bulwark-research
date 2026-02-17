@@ -62,22 +62,19 @@ function OnboardingPage() {
 
 	return (
 		<div className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-			{/* Background effects */}
-			<div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-vermillion/4 rounded-full blur-[200px] pointer-events-none" />
-
 			{/* Content */}
 			<div className="relative z-10 w-full max-w-sm">
 				{/* Logo */}
 				<Link to="/" className="flex items-center justify-center gap-2.5 mb-12 group animate-fade-in">
 					<BulwarkIcon className="w-8 h-8" />
 					<span
-						className="text-[20px] tracking-[0.06em] uppercase leading-none"
-						style={{ fontFamily: "'Archivo Black', sans-serif" }}
+						className="text-[20px] tracking-[0.04em] uppercase leading-none"
+						style={{ fontFamily: "'Instrument Sans', sans-serif", fontWeight: 700 }}
 					>
 						Bulwark{' '}
 						<span
-							className="text-muted"
-							style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 400 }}
+							className="text-dim"
+							style={{ fontFamily: "'IBM Plex Mono', monospace", fontWeight: 400, letterSpacing: '0.08em' }}
 						>
 							Research
 						</span>
@@ -89,20 +86,20 @@ function OnboardingPage() {
 					{(['email', 'profile', 'confirmation'] as const).map((s, i) => (
 						<div key={s} className="flex items-center gap-2">
 							<div
-								className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+								className={`w-2 h-2 transition-colors duration-300 ${
 									s === step
-										? 'bg-vermillion'
+										? 'bg-signal'
 										: ['email', 'profile', 'confirmation'].indexOf(step) > i
-											? 'bg-vermillion/40'
-											: 'bg-ink-border'
+											? 'bg-signal/40'
+											: 'bg-border'
 								}`}
 							/>
 							{i < 2 && (
 								<div
 									className={`w-8 h-px transition-colors duration-300 ${
 										['email', 'profile', 'confirmation'].indexOf(step) > i
-											? 'bg-vermillion/40'
-											: 'bg-ink-border'
+											? 'bg-signal/40'
+											: 'bg-border'
 									}`}
 								/>
 							)}
@@ -116,14 +113,14 @@ function OnboardingPage() {
 						<div className="text-center mb-8 animate-fade-up" style={{ animationDelay: '0.1s' }}>
 							<h1 className="section-title text-3xl sm:text-4xl mb-2">
 								Get{' '}
-								<span className="italic font-accent text-gradient-warm">started</span>
+								<span className="text-secondary">started</span>
 							</h1>
-							<p className="text-sm text-muted">
+							<p className="text-sm text-secondary">
 								Enter your email to create your client account.
 							</p>
 						</div>
 
-						<div className="card-glass p-8 rounded-2xl animate-fade-up" style={{ animationDelay: '0.2s' }}>
+						<div className="bp-card p-8 animate-fade-up" style={{ animationDelay: '0.2s' }}>
 							<form onSubmit={handleEmailSubmit} className="flex flex-col gap-4">
 								<div>
 									<label htmlFor="email" className="block font-mono text-[10px] text-dim uppercase tracking-wider mb-2">
@@ -137,10 +134,10 @@ function OnboardingPage() {
 										placeholder="you@company.com"
 										value={email}
 										onChange={(e) => setEmail(e.target.value)}
-										className="w-full px-4 py-3 rounded-full bg-ink-light border border-ink-border text-paper text-sm placeholder:text-dim focus:outline-none focus:border-vermillion/50 transition-colors"
+										className="w-full px-4 py-3 bg-surface border border-border text-ink text-sm placeholder:text-dim focus:outline-none focus:border-signal/50 transition-colors"
 									/>
 								</div>
-								<button type="submit" className="btn-glow w-full px-7 py-3 text-sm mt-2">
+								<button type="submit" className="btn-signal w-full px-7 py-3 text-sm mt-2">
 									Continue
 								</button>
 							</form>
@@ -154,14 +151,14 @@ function OnboardingPage() {
 						<div className="text-center mb-8 animate-fade-up" style={{ animationDelay: '0.05s' }}>
 							<h1 className="section-title text-3xl sm:text-4xl mb-2">
 								Tell us about{' '}
-								<span className="italic font-accent text-gradient-warm">you</span>
+								<span className="text-secondary">you</span>
 							</h1>
-							<p className="text-sm text-muted">
+							<p className="text-sm text-secondary">
 								So we can personalize your research experience.
 							</p>
 						</div>
 
-						<div className="card-glass p-8 rounded-2xl animate-fade-up" style={{ animationDelay: '0.1s' }}>
+						<div className="bp-card p-8 animate-fade-up" style={{ animationDelay: '0.1s' }}>
 							<form onSubmit={handleProfileSubmit} className="flex flex-col gap-4">
 								<div>
 									<label htmlFor="fullName" className="block font-mono text-[10px] text-dim uppercase tracking-wider mb-2">
@@ -175,7 +172,7 @@ function OnboardingPage() {
 										placeholder="Jane Smith"
 										value={fullName}
 										onChange={(e) => setFullName(e.target.value)}
-										className="w-full px-4 py-3 rounded-full bg-ink-light border border-ink-border text-paper text-sm placeholder:text-dim focus:outline-none focus:border-vermillion/50 transition-colors"
+										className="w-full px-4 py-3 bg-surface border border-border text-ink text-sm placeholder:text-dim focus:outline-none focus:border-signal/50 transition-colors"
 									/>
 								</div>
 								<div>
@@ -186,11 +183,11 @@ function OnboardingPage() {
 										<button
 											type="button"
 											onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
-											className={`w-full px-4 py-3 rounded-full bg-ink-light border text-sm text-left flex items-center justify-between transition-colors ${
+											className={`w-full px-4 py-3 bg-surface border text-sm text-left flex items-center justify-between transition-colors ${
 												roleDropdownOpen
-													? 'border-vermillion/50'
-													: 'border-ink-border'
-											} ${roleSelection ? 'text-paper' : 'text-dim'}`}
+													? 'border-signal/50'
+													: 'border-border'
+											} ${roleSelection ? 'text-ink' : 'text-dim'}`}
 										>
 											<span>{roleSelection || 'Select your role'}</span>
 											<svg
@@ -204,7 +201,7 @@ function OnboardingPage() {
 											</svg>
 										</button>
 										{roleDropdownOpen && (
-											<div className="absolute z-20 mt-2 w-full rounded-2xl border border-ink-border overflow-hidden overflow-y-auto max-h-52 shadow-lg shadow-black/10 backdrop-blur-none bg-ink">
+											<div className="absolute z-20 mt-2 w-full border border-border overflow-hidden overflow-y-auto max-h-52 shadow-lg shadow-black/10 backdrop-blur-sm bg-white/95">
 												{ROLE_OPTIONS.map((option) => (
 													<button
 														key={option}
@@ -213,22 +210,22 @@ function OnboardingPage() {
 															setRoleSelection(option)
 															setRoleDropdownOpen(false)
 														}}
-														className={`w-full px-4 py-2.5 text-sm text-left transition-colors hover:bg-black/5 ${
-															roleSelection === option ? 'text-vermillion' : 'text-paper'
+														className={`w-full px-4 py-2.5 text-sm text-left transition-colors hover:bg-border ${
+															roleSelection === option ? 'text-signal' : 'text-ink'
 														}`}
 													>
 														{option}
 													</button>
 												))}
-												<div className="h-px bg-ink-border" />
+												<div className="h-px bg-border" />
 												<button
 													type="button"
 													onClick={() => {
 														setRoleSelection('Other')
 														setRoleDropdownOpen(false)
 													}}
-													className={`w-full px-4 py-2.5 text-sm text-left transition-colors hover:bg-black/5 ${
-														roleSelection === 'Other' ? 'text-vermillion' : 'text-muted'
+													className={`w-full px-4 py-2.5 text-sm text-left transition-colors hover:bg-border ${
+														roleSelection === 'Other' ? 'text-signal' : 'text-secondary'
 													}`}
 												>
 													Other
@@ -244,7 +241,7 @@ function OnboardingPage() {
 											placeholder="Enter your role"
 											value={customRole}
 											onChange={(e) => setCustomRole(e.target.value)}
-											className="w-full mt-3 px-4 py-3 rounded-full bg-ink-light border border-ink-border text-paper text-sm placeholder:text-dim focus:outline-none focus:border-vermillion/50 transition-colors"
+											className="w-full mt-3 px-4 py-3 bg-surface border border-border text-ink text-sm placeholder:text-dim focus:outline-none focus:border-signal/50 transition-colors"
 										/>
 									)}
 								</div>
@@ -256,7 +253,7 @@ function OnboardingPage() {
 									>
 										Back
 									</button>
-									<button type="submit" className="btn-glow px-7 py-3 text-sm flex-[2]">
+									<button type="submit" className="btn-signal px-7 py-3 text-sm flex-[2]">
 										Continue
 									</button>
 								</div>
@@ -271,25 +268,25 @@ function OnboardingPage() {
 						<div className="text-center mb-8 animate-fade-up" style={{ animationDelay: '0.05s' }}>
 							<h1 className="section-title text-3xl sm:text-4xl mb-2">
 								Check your{' '}
-								<span className="italic font-accent text-gradient-warm">inbox</span>
+								<span className="text-secondary">inbox</span>
 							</h1>
-							<p className="text-sm text-muted">
+							<p className="text-sm text-secondary">
 								We sent a sign-in link to
 							</p>
 						</div>
 
-						<div className="card-glass p-8 rounded-2xl text-center animate-fade-up" style={{ animationDelay: '0.1s' }}>
-							<div className="text-paper font-medium mb-6">{email}</div>
+						<div className="bp-card p-8 text-center animate-fade-up" style={{ animationDelay: '0.1s' }}>
+							<div className="text-ink font-medium mb-6">{email}</div>
 							<p className="text-xs text-dim leading-relaxed mb-6">
 								Click the link in the email to access your client portal. The link expires in 15 minutes.
 							</p>
-							<div className="h-px bg-ink-border mb-6" />
+							<div className="h-px bg-border mb-6" />
 							<p className="text-xs text-dim">
 								Didn't receive it?{' '}
 								<button
 									type="button"
 									onClick={() => setStep('confirmation')}
-									className="text-paper hover:text-vermillion transition-colors"
+									className="text-ink hover:text-signal transition-colors"
 								>
 									Resend link
 								</button>
@@ -301,11 +298,11 @@ function OnboardingPage() {
 				{/* Below card */}
 				{step !== 'confirmation' && (
 					<p
-						className={`relative z-0 text-center text-sm text-muted mt-8 animate-fade-up ${roleDropdownOpen ? 'invisible' : ''}`}
+						className={`relative z-0 text-center text-sm text-secondary mt-8 animate-fade-up ${roleDropdownOpen ? 'invisible' : ''}`}
 						style={{ animationDelay: '0.3s' }}
 					>
 						Already have an account?{' '}
-						<Link to="/portal/sign-in" className="text-paper hover:text-vermillion transition-colors">
+						<Link to="/portal/sign-in" className="text-ink hover:text-signal transition-colors">
 							Sign in
 						</Link>
 					</p>
@@ -314,7 +311,7 @@ function OnboardingPage() {
 
 			{/* Bottom link back to site */}
 			<div className="absolute bottom-8 text-center animate-fade-in" style={{ animationDelay: '0.5s' }}>
-				<Link to="/" className="text-xs text-dim hover:text-muted transition-colors">
+				<Link to="/" className="text-xs text-dim hover:text-secondary transition-colors">
 					&larr; Back to bulwarkresearch.com
 				</Link>
 			</div>

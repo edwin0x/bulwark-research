@@ -1,15 +1,5 @@
-function CheckIcon() {
-	return (
-		<svg
-			className="w-4 h-4 text-emerald mx-auto"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke="currentColor"
-			strokeWidth={2}
-		>
-			<path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-		</svg>
-	)
+function CheckMark() {
+	return <span className="text-signal text-center block">✓</span>
 }
 
 const rows: Array<{
@@ -38,33 +28,33 @@ const rows: Array<{
 	},
 	{
 		feature: 'Market sizing',
-		recon: <CheckIcon />,
-		deployment: <CheckIcon />,
-		command: <CheckIcon />,
+		recon: <CheckMark />,
+		deployment: <CheckMark />,
+		command: <CheckMark />,
 	},
 	{
 		feature: 'Monte Carlo financials',
 		recon: <span className="text-dim">&mdash;</span>,
-		deployment: <CheckIcon />,
-		command: <CheckIcon />,
+		deployment: <CheckMark />,
+		command: <CheckMark />,
 	},
 	{
 		feature: 'GTM strategy playbook',
 		recon: <span className="text-dim">&mdash;</span>,
-		deployment: <CheckIcon />,
-		command: <CheckIcon />,
+		deployment: <CheckMark />,
+		command: <CheckMark />,
 	},
 	{
 		feature: 'Investor-grade deliverables',
 		recon: <span className="text-dim">&mdash;</span>,
-		deployment: <CheckIcon />,
-		command: <CheckIcon />,
+		deployment: <CheckMark />,
+		command: <CheckMark />,
 	},
 	{
 		feature: 'Priority turnaround',
 		recon: <span className="text-dim">&mdash;</span>,
 		deployment: <span className="text-dim">&mdash;</span>,
-		command: <CheckIcon />,
+		command: <CheckMark />,
 	},
 	{
 		feature: 'Client service',
@@ -76,32 +66,32 @@ const rows: Array<{
 
 export function ComparisonTable() {
 	return (
-		<section className="relative py-24 px-6">
+		<section className="relative py-16 px-6">
 			<div className="max-w-4xl mx-auto">
-				<div className="text-center mb-16">
-					<h2 className="section-title text-2xl sm:text-3xl reveal">Compare engagements</h2>
+				<div className="text-center mb-12">
+					<h2 className="section-title text-xl sm:text-2xl reveal">COMPARE ENGAGEMENTS</h2>
 				</div>
 
-				<div className="card-glass rounded-2xl overflow-hidden reveal delay-1">
+				<div className="border border-border overflow-hidden reveal delay-1">
 					<table className="w-full text-sm">
 						<thead>
-							<tr className="border-b border-ink-border">
-								<th className="text-left py-4 px-6 text-muted font-normal">Deliverable</th>
-								<th className="py-4 px-4 text-center font-semibold">Recon</th>
-								<th className="py-4 px-4 text-center font-semibold text-vermillion">Deployment</th>
-								<th className="py-4 px-4 text-center font-semibold">Command</th>
+							<tr className="border-b border-border bg-surface">
+								<th className="text-left py-4 px-6 font-mono text-[10px] text-dim uppercase tracking-[0.08em] font-normal">Deliverable</th>
+								<th className="py-4 px-4 text-center font-display text-xs font-700 uppercase tracking-wider">Recon</th>
+								<th className="py-4 px-4 text-center font-display text-xs font-700 uppercase tracking-wider text-signal">Deployment</th>
+								<th className="py-4 px-4 text-center font-display text-xs font-700 uppercase tracking-wider">Command</th>
 							</tr>
 						</thead>
-						<tbody className="text-ivory">
+						<tbody className="text-ink">
 							{rows.map((row, i) => (
 								<tr
 									key={row.feature}
-									className={i < rows.length - 1 ? 'border-b border-ink-border/50' : ''}
+									className={i < rows.length - 1 ? 'border-b border-border' : ''}
 								>
-									<td className="py-3.5 px-6 text-muted">{row.feature}</td>
-									<td className="py-3.5 px-4 text-center">{row.recon}</td>
-									<td className="py-3.5 px-4 text-center">{row.deployment}</td>
-									<td className="py-3.5 px-4 text-center">{row.command}</td>
+									<td className="py-3.5 px-6 text-secondary text-xs">{row.feature}</td>
+									<td className="py-3.5 px-4 text-center text-xs">{row.recon}</td>
+									<td className="py-3.5 px-4 text-center text-xs">{row.deployment}</td>
+									<td className="py-3.5 px-4 text-center text-xs">{row.command}</td>
 								</tr>
 							))}
 						</tbody>

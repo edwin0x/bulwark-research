@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as YcRouteImport } from './routes/yc'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SampleReportRouteImport } from './routes/sample-report'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -29,6 +30,11 @@ const YcRoute = YcRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SampleReportRoute = SampleReportRouteImport.update({
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/sample-report': typeof SampleReportRoute
+  '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/yc': typeof YcRoute
   '/portal/onboarding': typeof PortalOnboardingRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/sample-report': typeof SampleReportRoute
+  '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/yc': typeof YcRoute
   '/portal/onboarding': typeof PortalOnboardingRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/sample-report': typeof SampleReportRoute
+  '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/yc': typeof YcRoute
   '/portal/onboarding': typeof PortalOnboardingRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/sample-report'
+    | '/services'
     | '/terms'
     | '/yc'
     | '/portal/onboarding'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/sample-report'
+    | '/services'
     | '/terms'
     | '/yc'
     | '/portal/onboarding'
@@ -153,6 +164,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/sample-report'
+    | '/services'
     | '/terms'
     | '/yc'
     | '/portal/onboarding'
@@ -167,6 +179,7 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   SampleReportRoute: typeof SampleReportRoute
+  ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   YcRoute: typeof YcRoute
   PortalOnboardingRoute: typeof PortalOnboardingRoute
@@ -187,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sample-report': {
@@ -263,6 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   SampleReportRoute: SampleReportRoute,
+  ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   YcRoute: YcRoute,
   PortalOnboardingRoute: PortalOnboardingRoute,

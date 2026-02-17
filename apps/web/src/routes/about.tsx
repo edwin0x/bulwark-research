@@ -1,5 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { BlueprintSection } from '~/components/blueprint-section'
 import { Cta } from '~/components/cta'
+import { DimensionAnnotation } from '~/components/dimension-annotation'
 import { Footer } from '~/components/footer'
 import { Navbar } from '~/components/navbar'
 import { useScrollReveal } from '~/hooks/use-scroll-reveal'
@@ -19,52 +21,32 @@ export const Route = createFileRoute('/about')({
 	component: AboutPage,
 })
 
-const beliefs = [
+const principles = [
 	{
-		headline: 'Judgment is the last moat.',
+		title: 'Judgment is the last moat.',
 		copy: "AI made execution free. Anyone can ship a product in a weekend. The founders who win aren't the fastest builders — they're the ones who know what to build. We exist to arm that judgment with data.",
 	},
 	{
-		headline: "Research shouldn't require a retainer.",
+		title: "Research shouldn't require a retainer.",
 		copy: "For decades, serious market intelligence was locked behind consulting firms that charge $150K and take 8 weeks. That's not rigor — that's a toll booth. We removed the booth.",
 	},
 	{
-		headline: 'Everyone deserves due diligence.',
+		title: 'Everyone deserves due diligence.',
 		copy: "Solo founders. Indie hackers. Vibe coders. The person building at 2 AM in their apartment deserves the same quality research as a Series B company with a strategy team. We built Bulwark so they can have it.",
 	},
 	{
-		headline: 'AI-native means rethinking the model.',
+		title: 'AI-native means rethinking the model.',
 		copy: "We're not a consulting firm that uses AI. We're an AI-native firm that rethought consulting from scratch — what it covers, how fast it ships, and who gets access to it.",
 	},
-]
-
-const audiences = [
 	{
-		name: 'Solo Founders',
-		desc: 'Evaluating your first idea and need real data, not ChatGPT opinions.',
-	},
-	{
-		name: 'Indie Hackers',
-		desc: 'Building fast but need market conviction before full commitment.',
-	},
-	{
-		name: 'Vibe Coders',
-		desc: "You can build anything in a weekend — Bulwark tells you if it's worth building.",
+		title: 'Ship conviction, not slide decks.',
+		copy: "Our deliverable isn't a pretty PDF. It's the confidence to make a $500K decision in an afternoon — backed by the same data a Fortune 500 strategy team would use.",
 	},
 ]
 
-const weAreNot = [
-	'A chatbot wrapper with a pretty UI',
-	'A cheap alternative to real consulting',
-	'A recurring commitment that drains your runway',
-	'A generic chatbot that hallucinates market data',
-]
-
-const weAre = [
-	'An AI-native consulting firm, built from scratch',
-	'Institutional-grade research, democratized',
-	'One-time pricing because founders need cash flow',
-	'Real internet-scale research with sourced findings',
+const team = [
+	{ initial: 'E', name: 'Edwin', role: 'Founder & Principal' },
+	{ initial: 'S', name: 'Swarm', role: '47 Specialized Agents' },
 ]
 
 function AboutPage() {
@@ -75,26 +57,22 @@ function AboutPage() {
 			<Navbar activePage="about" />
 
 			{/* Hero */}
-			<section className="relative pt-40 pb-24 px-6 overflow-hidden">
-				<div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-vermillion/5 rounded-full blur-[160px] pointer-events-none" />
-
-				<div className="relative z-10 max-w-3xl mx-auto text-center">
-					<div className="overline-divider max-w-xs mx-auto mb-4 animate-fade-in">
-						About Bulwark
-					</div>
+			<section className="pt-32 pb-20 px-6">
+				<div className="max-w-4xl mx-auto">
+					<span className="font-mono text-[10px] text-dim tracking-[0.08em] uppercase block mb-4 animate-slide-in" style={{ animationDelay: '0.3s' }}>
+						// About Bulwark
+					</span>
 					<h1
-						className="section-title text-4xl sm:text-5xl md:text-6xl mb-6 animate-fade-up"
-						style={{ animationDelay: '0.1s' }}
+						className="section-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 animate-slide-in"
+						style={{ animationDelay: '0.4s' }}
 					>
-						Market research was gatekept.
+						MARKET RESEARCH
 						<br />
-						<span className="italic font-accent text-gradient-warm">
-							We opened the door.
-						</span>
+						<span className="text-secondary">WAS GATEKEPT. WE OPENED THE DOOR.</span>
 					</h1>
 					<p
-						className="text-lg text-muted max-w-xl mx-auto animate-fade-up"
-						style={{ animationDelay: '0.2s' }}
+						className="text-lg text-secondary max-w-xl animate-slide-in"
+						style={{ animationDelay: '0.5s' }}
 					>
 						Bulwark is an AI-native consulting firm that delivers institutional-grade
 						research to anyone with an idea — no retainer, no RFP, no six-figure
@@ -103,134 +81,56 @@ function AboutPage() {
 				</div>
 			</section>
 
-			{/* What We Believe */}
-			<section className="relative py-24 px-6">
-				<div className="max-w-6xl mx-auto">
-					<div className="text-center mb-16">
-						<div className="overline-divider max-w-xs mx-auto mb-4 reveal">
-							What We Believe
-						</div>
-						<h2 className="section-title text-3xl sm:text-4xl reveal delay-1">
-							Convictions, not{' '}
-							<span className="italic font-accent text-gradient-warm">
-								compromises.
-							</span>
-						</h2>
-					</div>
-
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-						{beliefs.map((belief, i) => (
-							<div
-								key={belief.headline}
-								className={`card-glass rounded-2xl p-8 reveal delay-${i + 2}`}
-							>
-								<h3 className="text-lg font-semibold text-paper mb-3">
-									"{belief.headline}"
-								</h3>
-								<p className="text-muted leading-relaxed">{belief.copy}</p>
+			{/* Principles */}
+			<BlueprintSection number="01" title="PRINCIPLES">
+				<div className="max-w-3xl">
+					{principles.map((principle, i) => (
+						<div key={principle.title} className={`reveal delay-${i + 1}`}>
+							<div className="py-8 border-b border-border">
+								<DimensionAnnotation width="100%" height="auto">
+									<div className="flex gap-6">
+										<span className="font-mono text-[10px] text-dim tracking-[0.08em] mt-1 shrink-0">
+											PRINCIPLE {String(i + 1).padStart(2, '0')}
+										</span>
+										<div>
+											<h3 className="font-display text-lg font-700 uppercase tracking-wider mb-3">
+												{principle.title}
+											</h3>
+											<p className="text-secondary leading-relaxed">{principle.copy}</p>
+										</div>
+									</div>
+								</DimensionAnnotation>
 							</div>
-						))}
-					</div>
-				</div>
-			</section>
-
-			{/* Built For Builders */}
-			<section className="relative py-24 px-6">
-				<div className="divider max-w-6xl mx-auto mb-24" />
-				<div className="max-w-4xl mx-auto">
-					<div className="text-center mb-16">
-						<div className="overline-divider max-w-xs mx-auto mb-4 reveal">
-							Built For Builders
 						</div>
-						<h2 className="section-title text-3xl sm:text-4xl reveal delay-1">
-							If you're building something,{' '}
-							<span className="italic font-accent text-gradient-warm">
-								this is for you.
-							</span>
-						</h2>
-					</div>
+					))}
+				</div>
+			</BlueprintSection>
 
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-						{audiences.map((audience, i) => (
-							<div
-								key={audience.name}
-								className={`border-l-2 border-vermillion pl-6 py-2 reveal delay-${i + 2}`}
-							>
-								<h3 className="text-paper font-semibold mb-2">
-									{audience.name}
-								</h3>
-								<p className="text-muted text-sm leading-relaxed">
-									{audience.desc}
-								</p>
+			{/* Team */}
+			<BlueprintSection number="02" title="TEAM">
+				<div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg">
+					{team.map((member, i) => (
+						<div key={member.name} className={`reveal delay-${i + 1} flex items-center gap-4`}>
+							<div className="w-12 h-12 border border-border bg-surface flex items-center justify-center font-mono text-lg text-secondary">
+								{member.initial}
 							</div>
-						))}
-					</div>
+							<div>
+								<div className="font-display text-sm font-700 uppercase tracking-wider">{member.name}</div>
+								<div className="font-mono text-[10px] text-dim tracking-[0.08em]">{member.role}</div>
+							</div>
+						</div>
+					))}
 				</div>
-			</section>
-
-			{/* What We're Not */}
-			<section className="relative py-24 px-6">
-				<div className="divider max-w-6xl mx-auto mb-24" />
-				<div className="max-w-4xl mx-auto">
-					<div className="text-center mb-16">
-						<div className="overline-divider max-w-xs mx-auto mb-4 reveal">
-							Clear On What We Are
-						</div>
-						<h2 className="section-title text-3xl sm:text-4xl reveal delay-1">
-							No pretense.{' '}
-							<span className="italic font-accent text-gradient-warm">
-								No ambiguity.
-							</span>
-						</h2>
-					</div>
-
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-						<div className="reveal delay-2">
-							<h3 className="font-mono text-[10px] uppercase tracking-widest text-dim mb-6">
-								We're not...
-							</h3>
-							<ul className="space-y-4">
-								{weAreNot.map((item) => (
-									<li
-										key={item}
-										className="flex items-start gap-3 text-dim"
-									>
-										<span className="text-vermillion/40 mt-0.5">✕</span>
-										<span>{item}</span>
-									</li>
-								))}
-							</ul>
-						</div>
-						<div className="reveal delay-3">
-							<h3 className="font-mono text-[10px] uppercase tracking-widest text-dim mb-6">
-								We are...
-							</h3>
-							<ul className="space-y-4">
-								{weAre.map((item) => (
-									<li
-										key={item}
-										className="flex items-start gap-3 text-paper"
-									>
-										<span className="text-emerald mt-0.5">✓</span>
-										<span>{item}</span>
-									</li>
-								))}
-							</ul>
-						</div>
-					</div>
-				</div>
-			</section>
+			</BlueprintSection>
 
 			{/* CTA */}
 			<Cta
-				overline="Join the Movement"
+				overline="// Join the movement"
 				title={
 					<>
-						The best ideas deserve real research.
+						THE BEST IDEAS DESERVE REAL RESEARCH.
 						<br />
-						<span className="italic font-accent text-gradient-warm">
-							Yours included.
-						</span>
+						<span className="text-ghost">YOURS INCLUDED.</span>
 					</>
 				}
 				subtitle="Your first engagement is complimentary. No pitch deck, no RFP, no gatekeepers."

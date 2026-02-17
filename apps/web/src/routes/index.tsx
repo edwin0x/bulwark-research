@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { BentoGrid } from '~/components/bento-grid'
+import { BlueprintSection } from '~/components/blueprint-section'
 import { Cta } from '~/components/cta'
 import { Faq } from '~/components/faq'
 import { Footer } from '~/components/footer'
@@ -57,26 +58,34 @@ function HomePage() {
 			<HowItWorks />
 			<BentoGrid />
 			<ReportPreview />
-			<Testimonials />
-			<section id="faq" className="relative py-24 px-6">
-				<div className="divider max-w-6xl mx-auto mb-24" />
-				<div className="max-w-2xl mx-auto">
-					<div className="text-center mb-16">
-						<div className="overline-divider max-w-xs mx-auto mb-4 reveal">FAQ</div>
-						<h2 className="section-title text-3xl sm:text-4xl reveal delay-1">Common questions</h2>
-					</div>
-					<Faq faqs={faqs} />
+
+			{/* Signal Section */}
+			<section className="bg-surface py-20 px-6">
+				<div className="max-w-4xl mx-auto text-center reveal">
+					<span className="font-mono text-4xl md:text-5xl text-ink stat-num block mb-6">
+						93% of clients ship within 8 weeks
+					</span>
+					<p className="text-secondary text-lg italic max-w-xl mx-auto">
+						"The dossier didn't just validate our idea — it gave us the roadmap to execute."
+					</p>
 				</div>
 			</section>
+
+			<Testimonials />
+
+			<BlueprintSection number="06" title="FAQ" id="faq">
+				<div className="max-w-2xl">
+					<Faq faqs={faqs} />
+				</div>
+			</BlueprintSection>
+
 			<Cta
-				overline="The Last Moat"
+				overline="// Start a conversation"
 				title={
 					<>
-						Taste decides what to build.
+						TASTE DECIDES WHAT TO BUILD.
 						<br />
-						<span className="italic font-accent text-gradient-warm">
-							Bulwark gives you the proof.
-						</span>
+						<span className="text-ghost">BULWARK GIVES YOU THE PROOF.</span>
 					</>
 				}
 				subtitle="Your first engagement is complimentary. A Big 4-quality dossier delivered to your inbox within 24 hours — no commitment required."

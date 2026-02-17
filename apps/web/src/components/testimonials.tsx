@@ -8,14 +8,14 @@ const quotes = [
 
 export function Testimonials() {
 	return (
-		<section className="py-16 overflow-hidden border-y border-ink-border/50">
+		<section className="py-12 overflow-hidden border-y border-border">
 			<div className="flex animate-marquee whitespace-nowrap">
 				{['set-a', 'set-b'].map((setId) => (
 					<span key={setId} className="contents">
 						{quotes.map((quote) => (
 							<span
 								key={`${setId}-${quote}`}
-								className="mx-12 text-sm text-gradient-warm italic font-accent"
+								className="mx-12 font-mono text-xs text-secondary tracking-wider"
 							>
 								{quote}
 							</span>

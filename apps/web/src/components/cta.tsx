@@ -20,18 +20,19 @@ export function Cta({
 	secondaryHref,
 }: CtaProps) {
 	return (
-		<section className="relative py-32 px-6 overflow-hidden">
-			{/* Background */}
-			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-vermillion/5 rounded-full blur-[160px] pointer-events-none" />
-
-			<div className="relative z-10 max-w-2xl mx-auto text-center">
+		<section className="section-dark py-24 px-6">
+			<div className="max-w-2xl mx-auto text-center">
 				{overline && (
-					<div className="overline-divider max-w-md mx-auto mb-10 reveal">{overline}</div>
+					<div className="font-mono text-[10px] text-dim tracking-[0.08em] uppercase mb-8 reveal">
+						{overline}
+					</div>
 				)}
-				<h2 className="section-title text-3xl sm:text-4xl md:text-5xl reveal delay-1">{title}</h2>
-				<p className="text-muted mt-4 mb-10 reveal delay-2">{subtitle}</p>
+				<h2 className="section-title text-2xl sm:text-3xl md:text-4xl text-white reveal delay-1">
+					{title}
+				</h2>
+				<p className="text-ghost mt-4 mb-10 reveal delay-2">{subtitle}</p>
 				<div className="flex flex-col sm:flex-row items-center justify-center gap-4 reveal delay-3">
-					<a href={primaryHref} className="btn-glow px-8 py-3.5 text-sm">
+					<a href={primaryHref} className="btn-signal px-8 py-3.5 text-sm">
 						{primaryLabel}
 					</a>
 					{secondaryLabel && secondaryHref && (

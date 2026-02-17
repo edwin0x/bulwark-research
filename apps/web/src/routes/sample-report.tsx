@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
+import { BlueprintSection } from '~/components/blueprint-section'
 import { Cta } from '~/components/cta'
 import { Footer } from '~/components/footer'
 import { Navbar } from '~/components/navbar'
@@ -33,24 +34,22 @@ function SampleReportPage() {
 		<div ref={revealRef}>
 			<Navbar activePage="sample-report" />
 
-			{/* Hero — Report Header Card */}
-			<section className="relative pt-40 pb-16 px-6 overflow-hidden">
-				<div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-vermillion/5 rounded-full blur-[160px] pointer-events-none" />
-
-				<div className="relative z-10 max-w-3xl mx-auto">
+			{/* Hero */}
+			<section className="pt-32 pb-16 px-6">
+				<div className="max-w-3xl mx-auto">
 					<div className="text-center mb-12">
-						<div className="overline-divider max-w-xs mx-auto mb-4 animate-fade-in">
-							Sample Report
-						</div>
+						<span className="font-mono text-[10px] text-dim tracking-[0.08em] uppercase block mb-4 animate-slide-in" style={{ animationDelay: '0.3s' }}>
+							// Sample Report
+						</span>
 						<h1
-							className="section-title text-3xl sm:text-4xl md:text-5xl mb-4 animate-fade-up"
-							style={{ animationDelay: '0.1s' }}
+							className="section-title text-3xl sm:text-4xl md:text-5xl mb-4 animate-slide-in"
+							style={{ animationDelay: '0.4s' }}
 						>
-							See what we deliver.
+							SEE WHAT WE DELIVER.
 						</h1>
 						<p
-							className="text-muted max-w-lg mx-auto animate-fade-up"
-							style={{ animationDelay: '0.2s' }}
+							className="text-secondary max-w-lg mx-auto animate-slide-in"
+							style={{ animationDelay: '0.5s' }}
 						>
 							A real dossier produced by our research desk. Review each section below — then
 							receive the complete PDF in your inbox.
@@ -59,27 +58,27 @@ function SampleReportPage() {
 
 					{/* Report header card */}
 					<div
-						className="report-glow rounded-2xl border border-ink-border bg-ink-light/80 p-6 md:p-8 animate-fade-up"
-						style={{ animationDelay: '0.3s' }}
+						className="bp-card p-6 md:p-8 animate-slide-in"
+						style={{ animationDelay: '0.6s' }}
 					>
 						<div className="flex items-center justify-between mb-4">
 							<div>
-								<div className="font-mono text-[10px] text-dim tracking-widest uppercase mb-1">
+								<div className="font-mono text-[10px] text-dim tracking-[0.08em] uppercase mb-1">
 									Bulwark Dossier · Confidential
 								</div>
-								<div className="font-serif text-xl font-semibold">{reportMeta.idea}</div>
+								<div className="font-display text-lg font-600 uppercase tracking-wider">{reportMeta.idea}</div>
 							</div>
 							<div className="flex items-center gap-2">
-								<div className="w-2 h-2 rounded-full bg-emerald animate-pulse-dot" />
-								<span className="font-mono text-sm text-emerald font-semibold">
+								<span className="w-2 h-2 bg-signal animate-pulse-dot" />
+								<span className="font-mono text-sm text-signal font-semibold">
 									{reportMeta.viabilityScore}/100
 								</span>
 							</div>
 						</div>
 
-						<div className="h-px bg-ink-border mb-4" />
+						<div className="h-px bg-border mb-4" />
 
-						<div className="font-mono text-[9px] text-dim tracking-widest uppercase">
+						<div className="font-mono text-[9px] text-dim tracking-[0.08em] uppercase">
 							Generated {reportMeta.date} · {reportMeta.pageCount} pages ·{' '}
 							{reportMeta.sourceCount.toLocaleString()} sources · {reportMeta.agentCount}{' '}
 							agents
@@ -89,8 +88,8 @@ function SampleReportPage() {
 			</section>
 
 			{/* Tabs + Content Panel */}
-			<section className="relative py-12 px-6">
-				<div className="max-w-3xl mx-auto">
+			<BlueprintSection number="01" title="SECTIONS">
+				<div className="max-w-3xl">
 					<div className="reveal">
 						<ReportTabBar
 							sections={reportSections}
@@ -102,18 +101,19 @@ function SampleReportPage() {
 						<ReportSectionPanel section={activeSection} />
 					</div>
 				</div>
-			</section>
+			</BlueprintSection>
 
 			{/* Email Gate */}
 			<ReportEmailGate />
 
 			{/* Bottom CTA */}
 			<Cta
-				overline="Your Turn"
+				overline="// Your turn"
 				title={
 					<>
-						Ready to commission{' '}
-						<span className="italic font-accent text-gradient-warm">your own research?</span>
+						READY TO COMMISSION
+						<br />
+						<span className="text-ghost">YOUR OWN RESEARCH?</span>
 					</>
 				}
 				subtitle="Your first engagement is complimentary. Receive a Big 4-quality dossier within 24 hours — no commitment required."

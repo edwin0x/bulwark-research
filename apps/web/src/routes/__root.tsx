@@ -1,4 +1,5 @@
 import { HeadContent, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
+import { CoordinateMarkers } from '~/components/coordinate-markers'
 import appCss from '~/styles/global.css?url'
 
 export const Route = createRootRoute({
@@ -6,7 +7,7 @@ export const Route = createRootRoute({
 		meta: [
 			{ charSet: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ name: 'theme-color', content: '#fafaf9' },
+			{ name: 'theme-color', content: '#fdfdfd' },
 			{
 				name: 'description',
 				content:
@@ -24,9 +25,15 @@ export const Route = createRootRoute({
 				href: 'https://fonts.gstatic.com',
 				crossOrigin: 'anonymous',
 			},
+			/* Instrument Sans (headlines + logo) + IBM Plex Mono (labels + logo secondary) from Google Fonts */
 			{
 				rel: 'stylesheet',
-				href: 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,500;1,600;1,700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Archivo+Black&display=swap',
+				href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap',
+			},
+			/* Satoshi (body) from Fontshare */
+			{
+				rel: 'stylesheet',
+				href: 'https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap',
 			},
 		],
 	}),
@@ -39,8 +46,34 @@ function RootComponent() {
 			<head>
 				<HeadContent />
 			</head>
-			<body className="grain bg-ink text-paper">
-				<Outlet />
+			<body className="bg-white text-ink">
+				{/* Persistent dot-grid background */}
+				<div className="dot-grid" aria-hidden="true" />
+
+				{/* Registration marks at viewport corners */}
+				<div className="registration-marks" aria-hidden="true">
+					<div className="reg-mark top-left">
+						<div className="reg-mark-circle" />
+					</div>
+					<div className="reg-mark top-right">
+						<div className="reg-mark-circle" />
+					</div>
+					<div className="reg-mark bottom-left">
+						<div className="reg-mark-circle" />
+					</div>
+					<div className="reg-mark bottom-right">
+						<div className="reg-mark-circle" />
+					</div>
+				</div>
+
+				{/* Coordinate markers (hidden on touch devices via CSS) */}
+				<CoordinateMarkers />
+
+				{/* Page content */}
+				<div className="relative z-10">
+					<Outlet />
+				</div>
+
 				<Scripts />
 			</body>
 		</html>
