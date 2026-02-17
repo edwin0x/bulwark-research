@@ -37,7 +37,7 @@ export function Hero() {
 					className="text-lg md:text-xl text-muted max-w-xl mx-auto mb-10 animate-fade-up"
 					style={{ animationDelay: '0.35s' }}
 				>
-					AI made execution cheap. Taste and judgment are the last moat. An agent swarm runs
+					AI made execution cheap. Taste and judgment are the last human moat. An agent swarm runs
 					internet-scale research on your idea and delivers a Big 4-quality dossier to your inbox —
 					in 30 minutes.
 				</p>
