@@ -53,7 +53,7 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 				{/* Right side */}
 				<div className="flex items-center gap-4">
 					<Link
-						to="/pricing"
+						to="/portal/sign-in"
 						className="hidden md:inline-block text-sm text-muted hover:text-paper transition-colors"
 					>
 						Client Portal
@@ -106,7 +106,7 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 						FAQ
 					</a>
 					<Link
-						to="/pricing"
+						to="/portal/sign-in"
 						onClick={() => setMenuOpen(false)}
 						className="text-muted hover:text-paper transition-colors py-1"
 					>

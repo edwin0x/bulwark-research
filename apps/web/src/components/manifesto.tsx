@@ -4,7 +4,6 @@ export function Manifesto() {
 	return (
 		<section className="relative py-28 px-6 overflow-hidden">
 			{/* Background accent */}
-			<div className="absolute inset-0 bg-grid opacity-40" />
 			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-radial-[ellipse_at_center] from-vermillion/5 to-transparent rounded-full blur-3xl" />
 
 			<div className="relative max-w-4xl mx-auto">

@@ -3,7 +3,6 @@ export function Hero() {
 		<section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-24 pb-16 overflow-hidden">
 			{/* Background effects */}
 			<div className="hero-glow absolute inset-0 pointer-events-none" />
-			<div className="bg-grid absolute inset-0 pointer-events-none opacity-40" />
 
 			{/* Content */}
 			<div className="relative z-10 max-w-4xl mx-auto text-center">

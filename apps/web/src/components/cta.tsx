@@ -22,7 +22,6 @@ export function Cta({
 	return (
 		<section className="relative py-32 px-6 overflow-hidden">
 			{/* Background */}
-			<div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
 			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-vermillion/5 rounded-full blur-[160px] pointer-events-none" />
 
 			<div className="relative z-10 max-w-2xl mx-auto text-center">

@@ -18,6 +18,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConfidentialityRouteImport } from './routes/confidentiality'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PortalSignInRouteImport } from './routes/portal/sign-in'
 
 const YcRoute = YcRouteImport.update({
   id: '/yc',
@@ -64,6 +65,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalSignInRoute = PortalSignInRouteImport.update({
+  id: '/portal/sign-in',
+  path: '/portal/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/sample-report': typeof SampleReportRoute
   '/terms': typeof TermsRoute
   '/yc': typeof YcRoute
+  '/portal/sign-in': typeof PortalSignInRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/sample-report': typeof SampleReportRoute
   '/terms': typeof TermsRoute
   '/yc': typeof YcRoute
+  '/portal/sign-in': typeof PortalSignInRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/sample-report': typeof SampleReportRoute
   '/terms': typeof TermsRoute
   '/yc': typeof YcRoute
+  '/portal/sign-in': typeof PortalSignInRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/sample-report'
     | '/terms'
     | '/yc'
+    | '/portal/sign-in'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/sample-report'
     | '/terms'
     | '/yc'
+    | '/portal/sign-in'
   id:
     | '__root__'
     | '/'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/sample-report'
     | '/terms'
     | '/yc'
+    | '/portal/sign-in'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,6 +157,7 @@ export interface RootRouteChildren {
   SampleReportRoute: typeof SampleReportRoute
   TermsRoute: typeof TermsRoute
   YcRoute: typeof YcRoute
+  PortalSignInRoute: typeof PortalSignInRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/sign-in': {
+      id: '/portal/sign-in'
+      path: '/portal/sign-in'
+      fullPath: '/portal/sign-in'
+      preLoaderRoute: typeof PortalSignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -225,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   SampleReportRoute: SampleReportRoute,
   TermsRoute: TermsRoute,
   YcRoute: YcRoute,
+  PortalSignInRoute: PortalSignInRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

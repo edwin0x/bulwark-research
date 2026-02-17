@@ -71,8 +71,7 @@ function YcLandingPage() {
 			{/* ── Hero ────────────────────────────────────── */}
 			<section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-16 overflow-hidden">
 				<div className="hero-glow absolute inset-0 pointer-events-none" />
-				<div className="bg-grid absolute inset-0 pointer-events-none opacity-40" />
-
+	
 				{/* Floating background text */}
 				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
 					<span className="font-serif text-[12vw] font-bold text-white/[0.015] whitespace-nowrap">
@@ -332,7 +331,6 @@ function YcLandingPage() {
 
 			{/* ── Bottom CTA ──────────────────────────────── */}
 			<section className="relative py-32 px-6 overflow-hidden">
-				<div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
 				<div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-vermillion/5 rounded-full blur-[160px] pointer-events-none" />
 
 				<div className="relative z-10 max-w-2xl mx-auto text-center">

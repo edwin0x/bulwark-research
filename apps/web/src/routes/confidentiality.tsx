@@ -23,7 +23,6 @@ function ConfidentialityPage() {
       <Navbar />
       {/* Hero Section */}
       <section className="relative pt-40 pb-24 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-vermillion/5 rounded-full blur-[160px] pointer-events-none" />
 
         <div className="relative z-10 max-w-3xl mx-auto text-center">
