@@ -1,0 +1,2 @@
+[  470412ms] [ERROR] Failed to load resource: net::ERR_EMPTY_RESPONSE @ http://localhost:4328/src/styles/global.css?t=1771318399267:0
+[  470413ms] [ERROR] [vite] Failed to reload /src/styles/global.css. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:4328/@vite/client:1613
