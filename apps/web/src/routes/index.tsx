@@ -99,7 +99,7 @@ function HomePage() {
 				primaryLabel="Validate Your Idea — Free"
 				primaryHref="#hero-input"
 				secondaryLabel="See Sample Report"
-				secondaryHref="#"
+				secondaryHref="/sample-report"
 			/>
 			<Footer />
 		</div>

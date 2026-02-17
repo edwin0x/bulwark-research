@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 
 interface NavbarProps {
-	activePage?: 'home' | 'pricing'
+	activePage?: 'home' | 'pricing' | 'sample-report'
 }
 
 export function Navbar({ activePage = 'home' }: NavbarProps) {
@@ -61,6 +61,12 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 						className={`${activePage === 'pricing' ? 'text-paper' : 'hover:text-paper'} transition-colors duration-200`}
 					>
 						Pricing
+					</Link>
+					<Link
+						to="/sample-report"
+						className={`${activePage === 'sample-report' ? 'text-paper' : 'hover:text-paper'} transition-colors duration-200`}
+					>
+						Sample Report
 					</Link>
 					<a href={`${hashPrefix}#faq`} className="hover:text-paper transition-colors duration-200">
 						FAQ

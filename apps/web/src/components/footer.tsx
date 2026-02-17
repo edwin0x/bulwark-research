@@ -62,9 +62,9 @@ export function Footer() {
 								</Link>
 							</li>
 							<li>
-								<a href="#" className="hover:text-paper transition-colors">
+								<Link to="/sample-report" className="hover:text-paper transition-colors">
 									Sample Report
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>

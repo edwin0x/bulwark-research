@@ -13,5 +13,8 @@
     "turbo": "^2.4.4"
   },
   "packageManager": "bun@1.2.0",
-  "workspaces": ["apps/*", "packages/*"]
+  "workspaces": ["apps/*", "packages/*"],
+  "dependencies": {
+    "vercel": "^50.18.0"
+  }
 }
