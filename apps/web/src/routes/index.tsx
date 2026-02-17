@@ -7,7 +7,6 @@ import { Hero } from '~/components/hero'
 import { HowItWorks } from '~/components/how-it-works'
 import { Manifesto } from '~/components/manifesto'
 import { Navbar } from '~/components/navbar'
-import { PricingCards } from '~/components/pricing-cards'
 import { Problem } from '~/components/problem'
 import { ReportPreview } from '~/components/report-preview'
 import { Testimonials } from '~/components/testimonials'
@@ -19,16 +18,16 @@ const faqs = [
 		a: "ChatGPT gives you a single model's opinion. Bulwark deploys an entire swarm of specialized agents — each focused on one dimension of due diligence — that crawl the internet, cross-reference findings across thousands of sources, run financial simulations, and produce a structured report with confidence scores. It's the difference between asking a friend and hiring McKinsey.",
 	},
 	{
-		q: 'What kind of research report do I get?',
-		a: 'A 30+ page intelligence brief covering every dimension McKinsey would analyze: market sizing (TAM/SAM/SOM), competitor landscape, business model viability, technical feasibility, risk matrix, GTM strategy, financial projections with Monte Carlo simulations, and an executive summary with a weighted go/no-go recommendation. Synthesized from 1,000+ data sources. Delivered to your inbox in about 30 minutes — and always available to download from your dashboard.',
+		q: 'What do I receive from an engagement?',
+		a: 'A 30+ page intelligence dossier covering every dimension a top consulting firm would analyze: market sizing (TAM/SAM/SOM), competitor landscape, business model viability, technical feasibility, risk matrix, GTM strategy, financial projections with Monte Carlo simulations, and an executive summary with a weighted go/no-go recommendation. Synthesized from 1,000+ data sources. Delivered to your inbox within 24 hours — and archived in your client portal.',
 	},
 	{
 		q: 'What do you mean by "agent swarm"?',
-		a: "Instead of a single AI answering your question, Bulwark deploys dozens of specialized agents in parallel — each an expert in a specific domain. They independently research, then a synthesis engine cross-references their findings to resolve conflicts and produce a unified intelligence brief. It's how large consulting firms work, but at internet scale.",
+		a: "Instead of a single AI answering your question, we deploy dozens of specialized agents in parallel — each an expert in a specific domain. They independently research, then a synthesis engine cross-references their findings to resolve conflicts and produce a unified intelligence dossier. It's how large consulting firms work, but at internet scale.",
 	},
 	{
 		q: 'Who is this for?',
-		a: 'Any founder deciding what to build next. Solo founders validating their first idea. Serial entrepreneurs choosing between concepts. Venture studios evaluating deal flow. Anyone who believes taste and judgment matter more than execution speed.',
+		a: 'Any founder deciding what to build next. Solo founders evaluating their first idea. Serial entrepreneurs choosing between concepts. Venture studios assessing deal flow. Anyone who believes taste and judgment matter more than execution speed.',
 	},
 	{
 		q: 'Is my idea kept confidential?',
@@ -59,21 +58,6 @@ function HomePage() {
 			<BentoGrid />
 			<ReportPreview />
 			<Testimonials />
-			<section id="pricing" className="relative py-24 px-6">
-				<div className="max-w-6xl mx-auto">
-					<div className="text-center mb-16">
-						<div className="overline-divider max-w-xs mx-auto mb-4 reveal">Engagements</div>
-						<h2 className="section-title text-3xl sm:text-4xl md:text-5xl reveal delay-1">
-							Big 4 rigor.
-							<br />
-							<span className="italic font-accent text-gradient-warm">
-								Founder-friendly rates.
-							</span>
-						</h2>
-					</div>
-					<PricingCards />
-				</div>
-			</section>
 			<section id="faq" className="relative py-24 px-6">
 				<div className="divider max-w-6xl mx-auto mb-24" />
 				<div className="max-w-2xl mx-auto">
@@ -95,7 +79,7 @@ function HomePage() {
 						</span>
 					</>
 				}
-				subtitle="Your first briefing is free. Get a Big 4-quality dossier delivered to your inbox in 30 minutes — no credit card, no catch."
+				subtitle="Your first engagement is complimentary. A Big 4-quality dossier delivered to your inbox within 24 hours — no commitment required."
 				primaryLabel="Hire Us — It's Free"
 				primaryHref="#hero-input"
 				secondaryLabel="View Sample Dossier"

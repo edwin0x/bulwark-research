@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YcRouteImport } from './routes/yc'
 import { Route as SampleReportRouteImport } from './routes/sample-report'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const YcRoute = YcRouteImport.update({
+  id: '/yc',
+  path: '/yc',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SampleReportRoute = SampleReportRouteImport.update({
   id: '/sample-report',
   path: '/sample-report',
@@ -40,12 +46,14 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/pricing': typeof PricingRoute
   '/sample-report': typeof SampleReportRoute
+  '/yc': typeof YcRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/pricing': typeof PricingRoute
   '/sample-report': typeof SampleReportRoute
+  '/yc': typeof YcRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/pricing': typeof PricingRoute
   '/sample-report': typeof SampleReportRoute
+  '/yc': typeof YcRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/pricing' | '/sample-report'
+  fullPaths: '/' | '/about' | '/pricing' | '/sample-report' | '/yc'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/pricing' | '/sample-report'
-  id: '__root__' | '/' | '/about' | '/pricing' | '/sample-report'
+  to: '/' | '/about' | '/pricing' | '/sample-report' | '/yc'
+  id: '__root__' | '/' | '/about' | '/pricing' | '/sample-report' | '/yc'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,10 +76,18 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   PricingRoute: typeof PricingRoute
   SampleReportRoute: typeof SampleReportRoute
+  YcRoute: typeof YcRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/yc': {
+      id: '/yc'
+      path: '/yc'
+      fullPath: '/yc'
+      preLoaderRoute: typeof YcRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sample-report': {
       id: '/sample-report'
       path: '/sample-report'
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   PricingRoute: PricingRoute,
   SampleReportRoute: SampleReportRoute,
+  YcRoute: YcRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

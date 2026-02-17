@@ -51,12 +51,6 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 						About
 					</Link>
 					<Link
-						to="/sample-report"
-						className={`${activePage === 'sample-report' ? 'text-paper' : 'hover:text-paper'} transition-colors duration-200`}
-					>
-						Sample Report
-					</Link>
-					<Link
 						to="/pricing"
 						className={`${activePage === 'pricing' ? 'text-paper' : 'hover:text-paper'} transition-colors duration-200`}
 					>
@@ -73,7 +67,7 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 						to="/pricing"
 						className="hidden sm:inline-block text-sm text-muted hover:text-paper transition-colors"
 					>
-						Sign in
+						Client Portal
 					</Link>
 					<a href={`${hashPrefix}#hero-input`} className="btn-glow px-5 py-2 text-sm">
 						Hire Us — Free

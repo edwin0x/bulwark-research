@@ -18,17 +18,17 @@ export function ReportEmailGate() {
 						<div className="text-4xl mb-4">✉️</div>
 						<h3 className="font-serif text-2xl font-semibold mb-2">Check your inbox!</h3>
 						<p className="text-muted mb-8">
-							The full 32-page report is on its way to{' '}
+							The full 32-page dossier is on its way to{' '}
 							<span className="text-ivory">{email}</span>.
 						</p>
 						<a href="/#hero-input" className="btn-glow inline-flex px-7 py-3 text-sm">
-							Validate Your Own Idea — Free
+							Hire Us — It's Free
 						</a>
 					</div>
 				) : (
 					<>
 						<h3 className="font-serif text-2xl sm:text-3xl font-semibold mb-2 reveal">
-							Get the full 32-page report
+							Receive the full 32-page dossier
 						</h3>
 						<p className="text-muted mb-8 reveal delay-1">
 							<span className="italic font-accent text-gradient-warm">
@@ -48,11 +48,11 @@ export function ReportEmailGate() {
 								className="flex-1 px-4 py-3 rounded-full bg-ink-light border border-ink-border text-paper text-sm placeholder:text-dim focus:outline-none focus:border-vermillion/50 transition-colors"
 							/>
 							<button type="submit" className="btn-glow px-7 py-3 text-sm whitespace-nowrap">
-								Send Report
+								Request Dossier
 							</button>
 						</form>
 						<p className="mt-4 font-mono text-[10px] text-dim uppercase tracking-wider reveal delay-3">
-							Free · No spam · PDF format
+							Complimentary · Confidential · PDF format
 						</p>
 					</>
 				)}

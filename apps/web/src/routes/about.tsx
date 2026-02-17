@@ -41,11 +41,11 @@ const beliefs = [
 const audiences = [
 	{
 		name: 'Solo Founders',
-		desc: 'Validating your first idea and need real data, not ChatGPT opinions.',
+		desc: 'Evaluating your first idea and need real data, not ChatGPT opinions.',
 	},
 	{
 		name: 'Indie Hackers',
-		desc: 'Shipping fast but want conviction that the market is real before you go all in.',
+		desc: 'Building fast but need market conviction before full commitment.',
 	},
 	{
 		name: 'Vibe Coders',
@@ -56,8 +56,8 @@ const audiences = [
 const weAreNot = [
 	'A chatbot wrapper with a pretty UI',
 	'A cheap alternative to real consulting',
-	'A subscription that drains your runway',
-	'A generic AI tool that hallucinates market data',
+	'A recurring commitment that drains your runway',
+	'A generic chatbot that hallucinates market data',
 ]
 
 const weAre = [
@@ -234,10 +234,10 @@ function AboutPage() {
 						</span>
 					</>
 				}
-				subtitle="Your first validation is free. No credit card, no pitch deck, no gatekeepers."
-				primaryLabel="Validate Your Idea — Free"
+				subtitle="Your first engagement is complimentary. No pitch deck, no RFP, no gatekeepers."
+				primaryLabel="Hire Us — It's Free"
 				primaryHref="/#hero-input"
-				secondaryLabel="See Sample Report"
+				secondaryLabel="View Sample Dossier"
 				secondaryHref="/sample-report"
 			/>
 

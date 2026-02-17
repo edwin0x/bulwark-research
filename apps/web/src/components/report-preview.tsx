@@ -8,9 +8,9 @@ const risks = [
 
 const bulletItems = [
 	'Multi-agent synthesis with cross-referenced confidence scoring',
-	'Internet-scale research across 1,000+ data sources per report',
+	'Internet-scale research across 1,000+ data sources per engagement',
 	'Monte Carlo financial simulations, not napkin math',
-	'Delivered to your inbox when ready — also downloadable from the website',
+	'Delivered to your inbox when ready — archived in your client portal',
 	'Comparison mode for stress-testing multiple ideas',
 ]
 
@@ -26,16 +26,16 @@ export function ReportPreview() {
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 					{/* Left: Copy */}
 					<div>
-						<div className="overline-divider max-w-xs mb-4 reveal">The Report</div>
+						<div className="overline-divider max-w-xs mb-4 reveal">The Dossier</div>
 						<h2 className="section-title text-3xl sm:text-4xl reveal delay-1">
-							A research report
+							A research dossier
 							<br />
 							<span className="italic font-accent text-gradient-warm">worthy of a boardroom</span>
 						</h2>
 						<p className="text-muted mt-4 leading-relaxed reveal delay-2">
 							Not a ChatGPT summary. A structured, data-backed intelligence brief synthesized from
-							thousands of data points across hundreds of sources — delivered to your inbox in 30
-							minutes. The kind Big 4 firms charge $150K+ for.
+							thousands of data points across hundreds of sources — delivered to your inbox within
+							24 hours. The kind Big 4 firms charge $150K+ for.
 						</p>
 
 						<ul className="mt-8 space-y-4">
@@ -49,7 +49,7 @@ export function ReportPreview() {
 
 						<div className="mt-10 reveal delay-5">
 							<a href="#hero-input" className="btn-glow inline-flex px-7 py-3 text-sm">
-								Try It Free →
+								Hire Us — It's Free →
 							</a>
 						</div>
 					</div>
@@ -61,7 +61,7 @@ export function ReportPreview() {
 							<div className="flex items-center justify-between mb-6">
 								<div>
 									<div className="font-mono text-[10px] text-dim tracking-widest uppercase mb-1">
-										Bulwark Report · Confidential
+										Bulwark Dossier · Confidential
 									</div>
 									<div className="font-serif text-lg font-semibold">AI-Powered Pet Insurance</div>
 								</div>

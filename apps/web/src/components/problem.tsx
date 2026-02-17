@@ -12,7 +12,7 @@ const stats = [
 	},
 	{
 		value: '$150K+',
-		label: "what a Big 4 firm charges for the research you'll get in 30 minutes",
+		label: "what a Big 4 firm charges for the research you'll get in 24 hours",
 		source: 'McKinsey / Deloitte',
 	},
 ]

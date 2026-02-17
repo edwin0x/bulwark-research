@@ -24,7 +24,7 @@ export function Hero() {
 						<span className="relative inline-flex rounded-full h-2 w-2 bg-emerald" />
 					</span>
 					<span className="font-mono text-[11px] tracking-[0.15em] uppercase text-emerald">
-						Research Preview Available Now
+						Now Accepting Engagements
 					</span>
 				</div>
 
@@ -43,9 +43,11 @@ export function Hero() {
 					className="text-lg md:text-xl text-muted max-w-xl mx-auto mb-10 animate-fade-up"
 					style={{ animationDelay: '0.35s' }}
 				>
-					AI made execution cheap. Taste and judgment are the last human moat. An agent swarm runs
-					internet-scale research on your idea and delivers a Big 4-quality dossier to your inbox —
-					in 30 minutes.
+					Brief us on your idea. We run the diligence.
+					<br />
+					A 30-page research dossier, delivered in 24 hours.
+					<br />
+					First engagement on the house.
 				</p>
 
 				{/* CTAs */}
@@ -59,7 +61,7 @@ export function Hero() {
 						</a>
 					</div>
 					<p className="mt-5 text-xs text-dim font-mono text-center">
-						First briefing free · Delivered in 30 min · No credit card
+						First engagement complimentary · Delivered in 24 hours · No commitment
 					</p>
 				</div>
 

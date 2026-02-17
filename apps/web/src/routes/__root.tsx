@@ -10,7 +10,7 @@ export const Route = createRootRoute({
 			{
 				name: 'description',
 				content:
-					'Everyone can build. Few know what to build. Get Big 4-quality due diligence on any startup idea — market research, competitor analysis, and financial projections delivered to your inbox in 30 minutes. First idea free.',
+					'Everyone can build. Few know what to build. Retain an AI-native consulting firm for Big 4-quality due diligence — market research, competitor analysis, and financial projections delivered within 24 hours. First engagement complimentary.',
 			},
 			{ property: 'og:type', content: 'website' },
 		],

@@ -73,8 +73,8 @@ const rows: Array<{
 		command: <CheckIcon />,
 	},
 	{
-		feature: 'Support',
-		recon: <span className="text-dim">Self-serve</span>,
+		feature: 'Client service',
+		recon: <span className="text-dim">Email</span>,
 		deployment: 'Email',
 		command: 'Dedicated desk',
 	},

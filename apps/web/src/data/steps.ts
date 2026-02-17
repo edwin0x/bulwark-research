@@ -8,9 +8,9 @@ export interface Step {
 export const steps: Step[] = [
 	{
 		num: '01',
-		title: 'Describe what you want to build',
-		desc: 'Tell us the idea in plain language — the problem, the customer, the vision. No pitch deck required. Our system decomposes it into researchable dimensions.',
-		mono: 'INPUT',
+		title: 'Brief us on the idea',
+		desc: 'Tell us the idea in plain language — the problem, the customer, the vision. No pitch deck required. We decompose it into researchable dimensions.',
+		mono: 'BRIEF',
 	},
 	{
 		num: '02',
@@ -20,8 +20,8 @@ export const steps: Step[] = [
 	},
 	{
 		num: '03',
-		title: 'Get your report in 30 minutes',
-		desc: "A synthesis engine cross-references every agent's findings, resolves conflicts, and scores confidence. Your report is delivered straight to your inbox — and available to download from the website anytime.",
+		title: 'Get your dossier in 24 hours',
+		desc: "A synthesis engine cross-references every agent's findings, resolves conflicts, and scores confidence. Your dossier is delivered to your inbox — and archived in your client portal.",
 		mono: 'DELIVER',
 	},
 ]

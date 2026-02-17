@@ -13,7 +13,7 @@ const faqs = [
 	},
 	{
 		q: 'What do I receive from an engagement?',
-		a: 'A 30+ page intelligence dossier covering every dimension a top consulting firm would analyze: market sizing (TAM/SAM/SOM), competitor landscape, business model viability, technical feasibility, risk matrix, GTM strategy, financial projections with Monte Carlo simulations, and an executive summary with a weighted go/no-go recommendation. Synthesized from 1,000+ data sources. Delivered to your inbox in about 30 minutes.',
+		a: 'A 30+ page intelligence dossier covering every dimension a top consulting firm would analyze: market sizing (TAM/SAM/SOM), competitor landscape, business model viability, technical feasibility, risk matrix, GTM strategy, financial projections with Monte Carlo simulations, and an executive summary with a weighted go/no-go recommendation. Synthesized from 1,000+ data sources. Delivered to your inbox within 24 hours.',
 	},
 	{
 		q: 'How does the Deployment retainer work?',
@@ -75,7 +75,7 @@ function PricingPage() {
 							style={{ animationDelay: '0.2s' }}
 						>
 							Your first engagement is complimentary — a full research dossier delivered to your
-							inbox in 30 minutes. No credit card, no strings.
+							inbox within 24 hours. No commitment, no strings.
 						</p>
 					</div>
 
@@ -102,8 +102,8 @@ function PricingPage() {
 				<div className="relative z-10 max-w-2xl mx-auto text-center">
 					<h2 className="section-title text-2xl sm:text-3xl mb-4 reveal">Still deciding?</h2>
 					<p className="text-muted mb-8 reveal delay-1">
-						Your first engagement is on us. A full research dossier delivered to your inbox in 30
-						minutes — no credit card, no obligation.
+						Your first engagement is on us. A full research dossier delivered to your inbox within
+						24 hours — no commitment, no obligation.
 					</p>
 					<a href="/#hero-input" className="btn-glow px-8 py-3.5 text-sm reveal delay-2">
 						Hire Us — It's Free

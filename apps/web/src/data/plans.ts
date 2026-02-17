@@ -26,7 +26,7 @@ export const plans: Plan[] = [
 	},
 	{
 		name: 'Deployment',
-		price: '299',
+		price: '499',
 		period: '/year',
 		desc: '10 deep research engagements per month — annual retainer',
 		features: [
@@ -35,19 +35,19 @@ export const plans: Plan[] = [
 			'Monte Carlo financial modeling',
 			'GTM strategy playbook',
 			'Investor-grade deliverables',
-			'Annual retainer — cancel anytime',
+			'Annual retainer agreement',
 		],
 		cta: 'Deploy the Swarm',
 		featured: true,
 	},
 	{
 		name: 'Command',
-		price: '599',
+		price: '999',
 		period: 'one-time',
 		desc: '10 engagements/month — permanent command access',
 		features: [
 			'10 engagements per month',
-			'Everything in Deployment',
+			'All Deployment deliverables',
 			'Lifetime command access',
 			'Priority turnaround',
 			'White-label deliverables',

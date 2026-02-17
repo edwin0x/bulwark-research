@@ -12,7 +12,7 @@ export function HowItWorks() {
 					<h2 className="section-title text-3xl sm:text-4xl md:text-5xl reveal delay-1">
 						Big 4 research quality.
 						<br />
-						<span className="italic font-accent text-gradient-warm">30 minutes. Not 5 months.</span>
+						<span className="italic font-accent text-gradient-warm">24 hours. Not 5 months.</span>
 					</h2>
 				</div>
 
