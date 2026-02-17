@@ -22,7 +22,7 @@ export function Footer() {
 								<path d="M16 9.5h7c0 7.5-3 13-7 16.5z" fill="var(--color-vermillion)" />
 							</svg>
 							<span
-								className="text-[14px] tracking-[0.06em] uppercase"
+								className="text-[18px] tracking-[0.06em] uppercase leading-none"
 								style={{ fontFamily: "'Archivo Black', sans-serif" }}
 							>
 								Bulwark{' '}
@@ -71,9 +71,9 @@ export function Footer() {
 						</h4>
 						<ul className="space-y-2.5 text-sm text-muted">
 							<li>
-								<a href="#" className="hover:text-paper transition-colors">
+								<Link to="/about" className="hover:text-paper transition-colors">
 									About
-								</a>
+								</Link>
 							</li>
 							<li>
 								<a href="#" className="hover:text-paper transition-colors">
