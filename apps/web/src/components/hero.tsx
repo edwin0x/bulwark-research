@@ -5,13 +5,6 @@ export function Hero() {
 			<div className="hero-glow absolute inset-0 pointer-events-none" />
 			<div className="bg-grid absolute inset-0 pointer-events-none opacity-40" />
 
-			{/* Floating background text */}
-			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
-				<span className="font-serif text-[12vw] font-bold text-white/[0.015] whitespace-nowrap">
-					JUDGMENT
-				</span>
-			</div>
-
 			{/* Content */}
 			<div className="relative z-10 max-w-4xl mx-auto text-center">
 				{/* Overline */}
