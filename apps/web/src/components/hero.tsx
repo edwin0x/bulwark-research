@@ -27,7 +27,7 @@ export function Hero() {
 					className="section-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 animate-fade-up"
 					style={{ animationDelay: '0.2s' }}
 				>
-					Everyone can build.
+					Everyone can build now.
 					<br />
 					Few know <span className="italic font-accent text-gradient-warm">what</span> to build.
 				</h1>
