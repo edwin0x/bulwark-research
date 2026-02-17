@@ -10,8 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as YcRouteImport } from './routes/yc'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SampleReportRouteImport } from './routes/sample-report'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConfidentialityRouteImport } from './routes/confidentiality'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -20,14 +24,34 @@ const YcRoute = YcRouteImport.update({
   path: '/yc',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SampleReportRoute = SampleReportRouteImport.update({
   id: '/sample-report',
   path: '/sample-report',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfidentialityRoute = ConfidentialityRouteImport.update({
+  id: '/confidentiality',
+  path: '/confidentiality',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -44,38 +68,82 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/confidentiality': typeof ConfidentialityRoute
+  '/contact': typeof ContactRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/sample-report': typeof SampleReportRoute
+  '/terms': typeof TermsRoute
   '/yc': typeof YcRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/confidentiality': typeof ConfidentialityRoute
+  '/contact': typeof ContactRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/sample-report': typeof SampleReportRoute
+  '/terms': typeof TermsRoute
   '/yc': typeof YcRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/confidentiality': typeof ConfidentialityRoute
+  '/contact': typeof ContactRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/sample-report': typeof SampleReportRoute
+  '/terms': typeof TermsRoute
   '/yc': typeof YcRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/pricing' | '/sample-report' | '/yc'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/confidentiality'
+    | '/contact'
+    | '/pricing'
+    | '/privacy'
+    | '/sample-report'
+    | '/terms'
+    | '/yc'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/pricing' | '/sample-report' | '/yc'
-  id: '__root__' | '/' | '/about' | '/pricing' | '/sample-report' | '/yc'
+  to:
+    | '/'
+    | '/about'
+    | '/confidentiality'
+    | '/contact'
+    | '/pricing'
+    | '/privacy'
+    | '/sample-report'
+    | '/terms'
+    | '/yc'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/confidentiality'
+    | '/contact'
+    | '/pricing'
+    | '/privacy'
+    | '/sample-report'
+    | '/terms'
+    | '/yc'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ConfidentialityRoute: typeof ConfidentialityRoute
+  ContactRoute: typeof ContactRoute
   PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
   SampleReportRoute: typeof SampleReportRoute
+  TermsRoute: typeof TermsRoute
   YcRoute: typeof YcRoute
 }
 
@@ -88,6 +156,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof YcRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sample-report': {
       id: '/sample-report'
       path: '/sample-report'
@@ -95,11 +170,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SampleReportRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/confidentiality': {
+      id: '/confidentiality'
+      path: '/confidentiality'
+      fullPath: '/confidentiality'
+      preLoaderRoute: typeof ConfidentialityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -122,8 +218,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ConfidentialityRoute: ConfidentialityRoute,
+  ContactRoute: ContactRoute,
   PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
   SampleReportRoute: SampleReportRoute,
+  TermsRoute: TermsRoute,
   YcRoute: YcRoute,
 }
 export const routeTree = rootRouteImport

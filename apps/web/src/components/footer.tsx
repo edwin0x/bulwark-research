@@ -45,7 +45,7 @@ export function Footer() {
 								</Link>
 							</li>
 							<li>
-								<a href="#" className="hover:text-paper transition-colors">
+								<a href="/#hero-input" className="hover:text-paper transition-colors">
 									Commission Research
 								</a>
 							</li>
@@ -60,13 +60,13 @@ export function Footer() {
 						<ul className="space-y-2.5 text-sm text-muted">
 							<li>
 								<Link to="/about" className="hover:text-paper transition-colors">
-									About the Firm
+									About
 								</Link>
 							</li>
 							<li>
-								<a href="#" className="hover:text-paper transition-colors">
+								<Link to="/contact" className="hover:text-paper transition-colors">
 									Contact
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>
@@ -76,19 +76,19 @@ export function Footer() {
 						<h4 className="font-mono text-[10px] uppercase tracking-widest text-dim mb-4">Legal</h4>
 						<ul className="space-y-2.5 text-sm text-muted">
 							<li>
-								<a href="#" className="hover:text-paper transition-colors">
+								<Link to="/privacy" className="hover:text-paper transition-colors">
 									Privacy Policy
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="#" className="hover:text-paper transition-colors">
+								<Link to="/terms" className="hover:text-paper transition-colors">
 									Terms of Service
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a href="#" className="hover:text-paper transition-colors">
+								<Link to="/confidentiality" className="hover:text-paper transition-colors">
 									Confidentiality
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>

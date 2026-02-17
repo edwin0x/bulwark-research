@@ -46,7 +46,7 @@ export function Hero() {
 				{/* CTAs */}
 				<div id="hero-input" className="animate-fade-up" style={{ animationDelay: '0.5s' }}>
 					<div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-						<a href="#" className="btn-glow w-full sm:w-auto px-8 py-3.5 text-sm font-semibold text-center">
+						<a href="/#hero-input" className="btn-glow w-full sm:w-auto px-8 py-3.5 text-sm font-semibold text-center">
 							Hire Us — It's Free →
 						</a>
 						<a href="/sample-report" className="btn-outline w-full sm:w-auto px-8 py-3.5 text-sm text-center">
