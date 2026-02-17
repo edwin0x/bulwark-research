@@ -62,12 +62,12 @@ function HomePage() {
 			<section id="pricing" className="relative py-24 px-6">
 				<div className="max-w-6xl mx-auto">
 					<div className="text-center mb-16">
-						<div className="overline-divider max-w-xs mx-auto mb-4 reveal">Pricing</div>
+						<div className="overline-divider max-w-xs mx-auto mb-4 reveal">Engagements</div>
 						<h2 className="section-title text-3xl sm:text-4xl md:text-5xl reveal delay-1">
 							Big 4 rigor.
 							<br />
 							<span className="italic font-accent text-gradient-warm">
-								Founder-friendly pricing.
+								Founder-friendly rates.
 							</span>
 						</h2>
 					</div>
@@ -95,10 +95,10 @@ function HomePage() {
 						</span>
 					</>
 				}
-				subtitle="Your first idea is free. Get a Big 4-quality dossier delivered to your inbox in 30 minutes — no credit card, no catch."
-				primaryLabel="Validate Your Idea — Free"
+				subtitle="Your first briefing is free. Get a Big 4-quality dossier delivered to your inbox in 30 minutes — no credit card, no catch."
+				primaryLabel="Hire Us — It's Free"
 				primaryHref="#hero-input"
-				secondaryLabel="See Sample Report"
+				secondaryLabel="View Sample Dossier"
 				secondaryHref="/sample-report"
 			/>
 			<Footer />

@@ -14,69 +14,69 @@ function CheckIcon() {
 
 const rows: Array<{
 	feature: string
-	free: React.ReactNode
-	pro: React.ReactNode
-	lifetime: React.ReactNode
+	recon: React.ReactNode
+	deployment: React.ReactNode
+	command: React.ReactNode
 }> = [
 	{
-		feature: 'Validations',
-		free: '10/mo',
-		pro: '10 credits',
-		lifetime: '10/mo forever',
+		feature: 'Research engagements',
+		recon: '1 complimentary',
+		deployment: '10/mo',
+		command: '10/mo permanently',
 	},
 	{
-		feature: 'Pricing model',
-		free: <span className="text-dim">Free forever</span>,
-		pro: 'One-time',
-		lifetime: 'One-time',
+		feature: 'Investment',
+		recon: <span className="text-dim">Free — no commitment</span>,
+		deployment: '$299/year',
+		command: '$599 one-time',
 	},
 	{
 		feature: 'Agent swarm analysis',
-		free: <span className="text-dim">Basic</span>,
-		pro: 'Full',
-		lifetime: 'Full',
+		recon: <span className="text-dim">Standard</span>,
+		deployment: 'Full depth',
+		command: 'Full depth',
 	},
 	{
 		feature: 'Market sizing',
-		free: <CheckIcon />,
-		pro: <CheckIcon />,
-		lifetime: <CheckIcon />,
+		recon: <CheckIcon />,
+		deployment: <CheckIcon />,
+		command: <CheckIcon />,
 	},
 	{
 		feature: 'Monte Carlo financials',
-		free: <span className="text-dim">&mdash;</span>,
-		pro: <CheckIcon />,
-		lifetime: <CheckIcon />,
+		recon: <span className="text-dim">&mdash;</span>,
+		deployment: <CheckIcon />,
+		command: <CheckIcon />,
 	},
 	{
-		feature: 'GTM playbook',
-		free: <span className="text-dim">&mdash;</span>,
-		pro: <CheckIcon />,
-		lifetime: <CheckIcon />,
+		feature: 'GTM strategy playbook',
+		recon: <span className="text-dim">&mdash;</span>,
+		deployment: <CheckIcon />,
+		command: <CheckIcon />,
 	},
 	{
-		feature: 'Investor-ready reports',
-		free: <span className="text-dim">&mdash;</span>,
-		pro: <CheckIcon />,
-		lifetime: <CheckIcon />,
+		feature: 'Investor-grade deliverables',
+		recon: <span className="text-dim">&mdash;</span>,
+		deployment: <CheckIcon />,
+		command: <CheckIcon />,
 	},
 	{
-		feature: 'White-label reports',
-		free: <span className="text-dim">&mdash;</span>,
-		pro: <span className="text-dim">&mdash;</span>,
-		lifetime: <CheckIcon />,
+		feature: 'White-label deliverables',
+		recon: <span className="text-dim">&mdash;</span>,
+		deployment: <span className="text-dim">&mdash;</span>,
+		command: <CheckIcon />,
 	},
 	{
-		feature: 'Priority processing',
-		free: <span className="text-dim">&mdash;</span>,
-		pro: <span className="text-dim">&mdash;</span>,
-		lifetime: <CheckIcon />,
+		feature: 'Priority turnaround',
+		recon: <span className="text-dim">&mdash;</span>,
+		deployment: <span className="text-dim">&mdash;</span>,
+		command: <CheckIcon />,
 	},
 	{
 		feature: 'Support',
-		free: <span className="text-dim">Community</span>,
-		pro: 'Email',
-		lifetime: 'Dedicated',
+		recon: <span className="text-dim">Self-serve</span>,
+		deployment: 'Email',
+		command: 'Dedicated desk',
 	},
 ]
 
@@ -85,17 +85,17 @@ export function ComparisonTable() {
 		<section className="relative py-24 px-6">
 			<div className="max-w-4xl mx-auto">
 				<div className="text-center mb-16">
-					<h2 className="section-title text-2xl sm:text-3xl reveal">Compare plans</h2>
+					<h2 className="section-title text-2xl sm:text-3xl reveal">Compare engagements</h2>
 				</div>
 
 				<div className="card-glass rounded-2xl overflow-hidden reveal delay-1">
 					<table className="w-full text-sm">
 						<thead>
 							<tr className="border-b border-ink-border">
-								<th className="text-left py-4 px-6 text-muted font-normal">Feature</th>
-								<th className="py-4 px-4 text-center font-semibold">Free</th>
-								<th className="py-4 px-4 text-center font-semibold text-vermillion">Pro</th>
-								<th className="py-4 px-4 text-center font-semibold">Lifetime</th>
+								<th className="text-left py-4 px-6 text-muted font-normal">Deliverable</th>
+								<th className="py-4 px-4 text-center font-semibold">Recon</th>
+								<th className="py-4 px-4 text-center font-semibold text-vermillion">Deployment</th>
+								<th className="py-4 px-4 text-center font-semibold">Command</th>
 							</tr>
 						</thead>
 						<tbody className="text-ivory">
@@ -105,9 +105,9 @@ export function ComparisonTable() {
 									className={i < rows.length - 1 ? 'border-b border-ink-border/50' : ''}
 								>
 									<td className="py-3.5 px-6 text-muted">{row.feature}</td>
-									<td className="py-3.5 px-4 text-center">{row.free}</td>
-									<td className="py-3.5 px-4 text-center">{row.pro}</td>
-									<td className="py-3.5 px-4 text-center">{row.lifetime}</td>
+									<td className="py-3.5 px-4 text-center">{row.recon}</td>
+									<td className="py-3.5 px-4 text-center">{row.deployment}</td>
+									<td className="py-3.5 px-4 text-center">{row.command}</td>
 								</tr>
 							))}
 						</tbody>

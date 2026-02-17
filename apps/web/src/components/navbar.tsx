@@ -44,17 +44,11 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 
 				{/* Nav Links (desktop) */}
 				<div className="hidden md:flex items-center gap-8 text-sm text-muted">
-					<a
-						href={`${hashPrefix}#how-it-works`}
-						className="hover:text-paper transition-colors duration-200"
-					>
-						How it works
-					</a>
 					<Link
-						to="/pricing"
-						className={`${activePage === 'pricing' ? 'text-paper' : 'hover:text-paper'} transition-colors duration-200`}
+						to="/about"
+						className={`${activePage === 'about' ? 'text-paper' : 'hover:text-paper'} transition-colors duration-200`}
 					>
-						Pricing
+						About
 					</Link>
 					<Link
 						to="/sample-report"
@@ -62,15 +56,15 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 					>
 						Sample Report
 					</Link>
+					<Link
+						to="/pricing"
+						className={`${activePage === 'pricing' ? 'text-paper' : 'hover:text-paper'} transition-colors duration-200`}
+					>
+						Pricing
+					</Link>
 					<a href={`${hashPrefix}#faq`} className="hover:text-paper transition-colors duration-200">
 						FAQ
 					</a>
-					<Link
-						to="/about"
-						className={`${activePage === 'about' ? 'text-paper' : 'hover:text-paper'} transition-colors duration-200`}
-					>
-						About
-					</Link>
 				</div>
 
 				{/* CTA */}
@@ -82,7 +76,7 @@ export function Navbar({ activePage = 'home' }: NavbarProps) {
 						Sign in
 					</Link>
 					<a href={`${hashPrefix}#hero-input`} className="btn-glow px-5 py-2 text-sm">
-						Request a Briefing
+						Hire Us — Free
 					</a>
 				</div>
 			</div>

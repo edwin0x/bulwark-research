@@ -6,14 +6,12 @@ export function PricingCards() {
 			{plans.map((plan, i) => (
 				<div
 					key={plan.name}
-					className={`card-glass rounded-2xl p-8 reveal delay-${i + 2} ${plan.featured ? 'pricing-active' : ''} flex flex-col`}
+					className={`card-glass rounded-2xl p-8 reveal delay-${i + 2} ${plan.featured ? 'pricing-active' : ''} flex flex-col relative`}
 				>
 					{plan.featured && (
-						<div className="mb-4">
-							<span className="px-3 py-1 rounded-full bg-vermillion/10 border border-vermillion/20 font-mono text-[10px] text-vermillion uppercase tracking-widest">
-								Best Value
-							</span>
-						</div>
+						<span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-ink-light border border-vermillion/20 backdrop-blur-xl font-mono text-[10px] text-vermillion uppercase tracking-widest whitespace-nowrap">
+							Most Popular
+						</span>
 					)}
 
 					<div className="mb-6">

@@ -35,55 +35,44 @@ export function Footer() {
 							</span>
 						</div>
 						<p className="mt-3 text-sm text-dim leading-relaxed max-w-xs">
-							Big 4-quality due diligence for founders who know that judgment — not execution — is
-							the real moat.
+							AI-powered research & intelligence services for founders making high-stakes decisions.
 						</p>
 					</div>
 
-					{/* Product */}
+					{/* Services */}
 					<div>
 						<h4 className="font-mono text-[10px] uppercase tracking-widest text-dim mb-4">
-							Product
+							Services
 						</h4>
 						<ul className="space-y-2.5 text-sm text-muted">
 							<li>
-								<a href="#how-it-works" className="hover:text-paper transition-colors">
-									How it works
-								</a>
+								<Link to="/sample-report" className="hover:text-paper transition-colors">
+									Sample Dossier
+								</Link>
 							</li>
 							<li>
 								<Link to="/pricing" className="hover:text-paper transition-colors">
-									Pricing
+									Engagements & Pricing
 								</Link>
 							</li>
 							<li>
-								<Link to="/sample-report" className="hover:text-paper transition-colors">
-									Sample Report
-								</Link>
+								<a href="#" className="hover:text-paper transition-colors">
+									Commission Research
+								</a>
 							</li>
 						</ul>
 					</div>
 
-					{/* Company */}
+					{/* Firm */}
 					<div>
 						<h4 className="font-mono text-[10px] uppercase tracking-widest text-dim mb-4">
-							Company
+							Firm
 						</h4>
 						<ul className="space-y-2.5 text-sm text-muted">
 							<li>
 								<Link to="/about" className="hover:text-paper transition-colors">
-									About
+									About the Firm
 								</Link>
-							</li>
-							<li>
-								<a href="#" className="hover:text-paper transition-colors">
-									Blog
-								</a>
-							</li>
-							<li>
-								<a href="#" className="hover:text-paper transition-colors">
-									Careers
-								</a>
 							</li>
 							<li>
 								<a href="#" className="hover:text-paper transition-colors">
@@ -99,17 +88,17 @@ export function Footer() {
 						<ul className="space-y-2.5 text-sm text-muted">
 							<li>
 								<a href="#" className="hover:text-paper transition-colors">
-									Privacy
+									Privacy Policy
 								</a>
 							</li>
 							<li>
 								<a href="#" className="hover:text-paper transition-colors">
-									Terms
+									Terms of Service
 								</a>
 							</li>
 							<li>
 								<a href="#" className="hover:text-paper transition-colors">
-									Security
+									Confidentiality
 								</a>
 							</li>
 						</ul>
