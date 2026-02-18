@@ -11,10 +11,12 @@
 		"check": "tsc --noEmit"
 	},
 	"dependencies": {
+		"@posthog/react": "^1.7.1",
 		"@tailwindcss/vite": "^4.1.18",
 		"@tanstack/react-router": "^1.160.2",
 		"@tanstack/react-start": "^1.160.2",
 		"nitro": "^3.0.1-alpha.2",
+		"posthog-js": "^1.347.2",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
 		"tailwindcss": "^4.1.18"

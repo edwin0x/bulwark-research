@@ -1,5 +1,6 @@
 import { HeadContent, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
 import { CoordinateMarkers } from '~/components/coordinate-markers'
+import { PostHogProvider } from '~/components/posthog-provider'
 import appCss from '~/styles/global.css?url'
 
 export const Route = createRootRoute({
@@ -70,9 +71,11 @@ function RootComponent() {
 				<CoordinateMarkers />
 
 				{/* Page content */}
-				<div className="relative z-10">
-					<Outlet />
-				</div>
+				<PostHogProvider>
+					<div className="relative z-10">
+						<Outlet />
+					</div>
+				</PostHogProvider>
 
 				<Scripts />
 			</body>
