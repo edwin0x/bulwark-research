@@ -22,12 +22,12 @@ export function Hero() {
 
 					{/* Headline */}
 					<h1
-						className="section-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 animate-slide-in"
+						className="section-title text-3xl sm:text-4xl md:text-5xl mb-6 animate-slide-in"
 						style={{ animationDelay: '0.5s' }}
 					>
-						We Architect
-						<br />
-						What You Ship
+						Know What to Build
+						<br className="hidden sm:block" />
+						{' '}Before You Build It
 					</h1>
 
 					{/* Subheadline */}
