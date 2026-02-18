@@ -8,8 +8,12 @@ export interface Plan {
 	featured: boolean
 	/** Show strikethrough price with "Free" label */
 	freeForNow?: boolean
+	/** Original price shown as strikethrough (limited time discount) */
+	originalPrice?: string
 	/** Badge text like "5 slots left" */
 	badge?: string
+	/** Show "Launch only" label under price */
+	launchOnly?: boolean
 }
 
 export const plans: Plan[] = [
@@ -32,6 +36,7 @@ export const plans: Plan[] = [
 	{
 		name: 'Deployment',
 		price: '499',
+		originalPrice: '999',
 		period: '/year',
 		desc: '10 deep research engagements per month — annual retainer',
 		features: [
@@ -60,5 +65,6 @@ export const plans: Plan[] = [
 		cta: 'Take Command',
 		featured: false,
 		badge: 'Few slots left',
+		launchOnly: true,
 	},
 ]
