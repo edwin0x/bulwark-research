@@ -19,7 +19,7 @@ const faqs = [
 	},
 	{
 		q: 'How does the Deployment retainer work?',
-		a: "Deployment is an annual retainer at $299/year — you get 10 deep research engagements per month for the duration. Cancel anytime. The Command tier is a one-time payment for permanent access with no recurring charges.",
+		a: "Deployment is an annual retainer at $499/year — you get 10 deep research engagements per month for the duration. Cancel anytime. The Command tier is a one-time payment for permanent access with no recurring charges.",
 	},
 	{
 		q: 'Is my research kept confidential?',
