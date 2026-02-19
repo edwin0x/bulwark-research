@@ -24,4 +24,10 @@ export const steps: Step[] = [
 		desc: "A synthesis engine cross-references every agent's findings, resolves conflicts, and scores confidence. Your dossier is delivered to your inbox — and archived in your client portal.",
 		mono: 'DELIVER',
 	},
+	{
+		num: '04',
+		title: 'Measure and iterate',
+		desc: 'Every finding includes confidence scores and source citations. Compare multiple ideas side-by-side, stress-test assumptions, and iterate with follow-up engagements.',
+		mono: 'MEASURE',
+	},
 ]
