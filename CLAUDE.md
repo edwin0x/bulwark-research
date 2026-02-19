@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Bulwark Research is an AI-powered startup idea validator. Users describe a startup idea, an autonomous agent swarm runs internet-scale research, and a Big 4-quality intelligence brief is delivered to their inbox in ~30 minutes.
+Bulwark Research is an AI-powered startup idea validator. Users describe a startup idea, an autonomous agent swarm runs internet-scale research, and a Big 4-quality intelligence brief is delivered to their inbox within 24 hours.
 
 See `docs/business-overview.md` for the full business context.
 
@@ -123,13 +123,13 @@ The visual identity is a technical blueprint aesthetic — clean white backgroun
 
 ## Pricing Model
 
-Credit-based, **no subscriptions**. This is a deliberate product decision.
+Launch pricing with discounts and scarcity. Credit-based with an annual retainer option.
 
 | Plan | Price | Model |
 |---|---|---|
-| Free | $0 | 10 basic validations/month, forever |
-| Pro | $299 | One-time credit pack (10 deep research credits, never expire) |
-| Lifetime | $599 | One-time, 10 deep researches/month forever |
+| Recon | Free (normally $99) | 1 full research dossier — free while we launch |
+| Deployment | $499/year (normally $999) | 10 deep research engagements/month — annual retainer |
+| Command | $999 one-time | 10 engagements/month — permanent command access (launch only) |
 
 Plans data lives in `apps/web/src/data/plans.ts` — single source of truth for both pages.
 
@@ -166,8 +166,8 @@ Plans data lives in `apps/web/src/data/plans.ts` — single source of truth for 
 ### Content
 - Copy should be concise, high-conviction, and avoid generic AI/startup jargon
 - The tone is: "ex-McKinsey analyst writing for indie hackers" — rigorous but not corporate
-- Key messaging pillars: **free first idea**, **30-minute delivery to inbox**, **downloadable from website**
-- Time to deliver is **30 minutes** (not 5 minutes) — be consistent across all copy
+- Key messaging pillars: **free first idea**, **24-hour delivery to inbox**, **downloadable from website**
+- Time to deliver is **24 hours** — be consistent across all copy
 
 ### Pages
 - `routes/index.tsx` contains the full homepage including a pricing section preview
