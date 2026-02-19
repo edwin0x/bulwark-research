@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 import { plans } from '~/data/plans'
 import { CropMarks } from './crop-marks'
@@ -102,12 +103,21 @@ export function PricingCards() {
 						))}
 					</ul>
 
-					<button
-						type="button"
-						className={`w-full py-3 text-sm font-semibold ${plan.featured ? 'btn-signal' : 'btn-outline'}`}
-					>
-						{plan.cta}
-					</button>
+					{plan.ctaLink ? (
+						<Link
+							to={plan.ctaLink}
+							className={`w-full py-3 text-sm font-semibold text-center block ${plan.featured ? 'btn-signal' : 'btn-outline'}`}
+						>
+							{plan.cta}
+						</Link>
+					) : (
+						<button
+							type="button"
+							className={`w-full py-3 text-sm font-semibold ${plan.featured ? 'btn-signal' : 'btn-outline'}`}
+						>
+							{plan.cta}
+						</button>
+					)}
 				</div>
 			))}
 		</div>

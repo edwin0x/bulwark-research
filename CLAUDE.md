@@ -18,26 +18,35 @@ See `docs/business-overview.md` for the full business context.
 - **Linting/Formatting:** Biome (single config at monorepo root)
 - **Package manager:** bun
 - **Language:** TypeScript (strict mode)
-- **Fonts:** Space Grotesk (headings), Playfair Display italic (accent), Manrope (body), JetBrains Mono (code/labels)
+- **Auth/Database:** Supabase (auth, Postgres, RLS)
+- **Fonts:** Instrument Sans (headings/display), Satoshi (body), IBM Plex Mono (labels/code)
 
 ## Project Structure
 
 ```
 bulwark-research/
 ├── apps/
-│   ├── web/                          # TanStack Start marketing site
+│   ├── web/                          # TanStack Start marketing site + client portal
 │   │   ├── src/
 │   │   │   ├── routes/
-│   │   │   │   ├── __root.tsx        # Root layout (HTML shell, fonts, grain)
+│   │   │   │   ├── __root.tsx        # Root layout (HTML shell, fonts, dot grid)
 │   │   │   │   ├── index.tsx         # Homepage route
-│   │   │   │   └── pricing.tsx       # Pricing route
+│   │   │   │   ├── pricing.tsx       # Pricing route
+│   │   │   │   └── portal/           # Client portal (auth-gated)
+│   │   │   │       ├── sign-in.tsx   # Email/password sign-in
+│   │   │   │       ├── onboarding.tsx# Sign-up flow (email → profile → confirm)
+│   │   │   │       ├── callback.tsx  # Supabase auth callback handler
+│   │   │   │       ├── index.tsx     # Portal dashboard
+│   │   │   │       └── engagements/  # Engagement CRUD
 │   │   │   ├── components/           # React components (kebab-case files)
-│   │   │   ├── data/                 # Shared data (plans, agents, steps)
-│   │   │   ├── hooks/                # React hooks (use-scroll-reveal)
+│   │   │   ├── data/                 # Shared data (plans, agents, research lenses)
+│   │   │   ├── hooks/                # React hooks (use-scroll-reveal, use-require-auth)
+│   │   │   ├── lib/                  # Utilities (supabase client, database types)
 │   │   │   ├── styles/
 │   │   │   │   └── global.css        # Design system (@theme tokens, animations)
 │   │   │   └── router.tsx            # TanStack Router config
 │   │   ├── public/                   # Static assets (favicons)
+│   │   ├── supabase/migrations/      # SQL migrations (profiles, engagements)
 │   │   └── vite.config.ts            # TanStack Start + Tailwind v4 plugins
 │   │
 │   └── api/                          # Hono API placeholder
@@ -59,23 +68,26 @@ bulwark-research/
 
 ---
 
-## Design System
+## Design System ("Blueprint")
+
+The visual identity is a technical blueprint aesthetic — clean white backgrounds, dot-grid patterns, registration marks at viewport corners, and sharp geometric elements with zero border-radius.
 
 ### Colors (defined in `apps/web/src/styles/global.css` `@theme` block)
 
-**Light theme** — the site uses a warm off-white background with dark text.
+**Light theme** — achromatic palette with a single signal red accent.
 
 | Token | Value | Usage |
 |---|---|---|
-| `--color-ink` | `#fafaf9` | Background (light) |
-| `--color-ink-light` | `#f0f0ee` | Card backgrounds |
-| `--color-ink-mid` | `#e8e8e3` | Mid-level backgrounds |
-| `--color-ink-border` | `#d4d4cf` | Borders, dividers |
-| `--color-paper` | `#09090b` | Primary text (dark) |
-| `--color-ivory` | `#1c1c1f` | Secondary text |
-| `--color-muted` | `#6f6d66` | Muted text |
-| `--color-dim` | `#a1a09a` | Subtle text, labels |
-| `--color-vermillion` | `#dc3d43` | Primary accent (CTAs, highlights) |
+| `--color-white` | `#fdfdfd` | Page background |
+| `--color-surface` | `#f4f4f5` | Card fills, input backgrounds |
+| `--color-grid` | `#e8e8ec` | Dot grid, registration marks |
+| `--color-border` | `#c8c8cf` | Borders, dividers, card edges |
+| `--color-ink` | `#131316` | Primary text (dark) |
+| `--color-secondary` | `#5a5a65` | Secondary text |
+| `--color-dim` | `#9c9ca6` | Muted text, labels |
+| `--color-ghost` | `#d5d5db` | Large section numbers, faint UI |
+| `--color-signal` | `#e03e3e` | Primary accent (CTAs, active states) |
+| `--color-signal-bg` | `#fef2f2` | Signal background (error states) |
 | `--color-amber` | `#d9940a` | Secondary accent |
 | `--color-emerald` | `#2d8a3e` | Success states |
 | `--color-cyan` | `#0089a8` | Info accents |
@@ -84,27 +96,28 @@ bulwark-research/
 
 | Variable | Font | Usage |
 |---|---|---|
-| `--font-serif` | Space Grotesk | Headlines, section titles, prices |
-| `--font-accent` | Playfair Display (italic only) | Emotional emphasis — always paired with `italic` and `text-gradient-warm` |
-| `--font-sans` | Manrope | Body text (default) |
-| `--font-mono` | JetBrains Mono | Labels, overlines, code-style text |
-
-**Important:** The accent font pattern is always: `italic font-accent text-gradient-warm`. All 10+ instances follow this convention. Do not use Playfair Display in non-italic or non-gradient contexts.
+| `--font-display` | Instrument Sans | Headlines, section titles, buttons (uppercase, tracked) |
+| `--font-sans` | Satoshi | Body text (default, via Fontshare) |
+| `--font-mono` | IBM Plex Mono | Labels, overlines, code-style text, coordinates |
 
 ### Key CSS Classes
 
 | Class | Purpose |
 |---|---|
-| `.card-glass` | Glass-morphism card with hover glow |
-| `.btn-glow` | Primary CTA button (vermillion with glow on hover) |
-| `.btn-outline` | Secondary button (border only) |
-| `.overline-divider` | Mono label with flanking gradient lines |
-| `.section-title` | Section headings (Space Grotesk, tight leading) |
-| `.text-gradient` | Paper-to-muted gradient text |
-| `.text-gradient-warm` | Vermillion-to-amber gradient text |
-| `.reveal` | Scroll-triggered fade-up animation (via `useScrollReveal` hook) |
+| `.bp-card` | Blueprint card — transparent bg, border, red hover accent, `border-radius: 0` |
+| `.bp-card-filled` | Blueprint card with surface fill |
+| `.btn-signal` | Primary CTA button (signal red border, fills on hover) |
+| `.btn-outline` | Secondary button (border only, fills ink on hover) |
+| `.overline-divider` | Mono label with flanking border lines |
+| `.section-title` | Section headings (Instrument Sans, uppercase, tight leading) |
+| `.bp-section` | Section with large ghost number + title + rule |
+| `.crop-marks` | Print-style crop marks on corners of an element |
+| `.dot-grid` | Fixed full-viewport dot grid background |
+| `.registration-marks` | Crosshair marks at viewport corners |
+| `.reveal` | Scroll-triggered slide-in animation (via `useScrollReveal` hook) |
 | `.delay-{1-8}` | Stagger animation delays (0.1s increments) |
-| `.grain` | Film grain overlay (applied to `<body>`) |
+| `.dim-annotate` | Dimension annotations that appear on hover |
+| `.bp-link` | Underline-draw-from-left link style |
 
 ---
 
@@ -137,6 +150,13 @@ Plans data lives in `apps/web/src/data/plans.ts` — single source of truth for 
 - Prefer utility classes over custom CSS. Add to `global.css` only for reusable patterns
 - New colors/fonts must be added to the `@theme` block to work as Tailwind utilities
 
+### Supabase
+- Client is lazy-initialized via `getSupabase()` from `~/lib/supabase` — never import a bare `supabase` constant
+- Database types live in `~/lib/database.types.ts` — regenerate from migrations when schema changes
+- Auth-gated portal pages use the `useRequireAuth()` hook from `~/hooks/use-require-auth`
+- Always add explicit `.eq('user_id', session.user.id)` filters on queries — don't rely solely on RLS
+- Env vars: `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` (see `.env.example`)
+
 ### Components
 - React components in `apps/web/src/components/` — named exports, kebab-case files
 - Scroll reveal uses `useScrollReveal()` hook — wrap page content in a div with `ref={revealRef}`
@@ -152,7 +172,8 @@ Plans data lives in `apps/web/src/data/plans.ts` — single source of truth for 
 ### Pages
 - `routes/index.tsx` contains the full homepage including a pricing section preview
 - `routes/pricing.tsx` is the dedicated pricing page with comparison table and pricing-specific FAQ
-- Both pages share the same `__root.tsx` layout and `global.css` design system
+- `routes/portal/` is the auth-gated client portal (sign-in, onboarding, dashboard, engagements)
+- All pages share the same `__root.tsx` layout (dot grid, registration marks, coordinate markers)
 - Navigation links between pages use TanStack `<Link>` for routes, `<a>` for hash anchors
 
 ---

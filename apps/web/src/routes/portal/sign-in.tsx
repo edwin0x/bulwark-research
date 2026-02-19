@@ -1,6 +1,7 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
 import { BulwarkIcon } from '~/components/bulwark-icon'
+import { getSupabase } from '~/lib/supabase'
 
 export const Route = createFileRoute('/portal/sign-in')({
 	head: () => ({
@@ -19,9 +20,50 @@ export const Route = createFileRoute('/portal/sign-in')({
 function SignInPage() {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [loading, setLoading] = useState(false)
+	const [error, setError] = useState('')
+	const [resetSent, setResetSent] = useState(false)
+	const navigate = useNavigate()
 
-	function handleSubmit(e: React.FormEvent) {
+	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
+		setLoading(true)
+		setError('')
+
+		const { error: signInError } = await getSupabase().auth.signInWithPassword({
+			email,
+			password,
+		})
+
+		if (signInError) {
+			setError(signInError.message)
+			setLoading(false)
+			return
+		}
+
+		navigate({ to: '/portal' })
+	}
+
+	async function handleForgotPassword(e: React.MouseEvent) {
+		e.preventDefault()
+		if (!email) {
+			setError('Enter your email above, then click forgot password.')
+			return
+		}
+
+		setLoading(true)
+		setError('')
+
+		const { error: resetError } = await getSupabase().auth.resetPasswordForEmail(email, {
+			redirectTo: `${window.location.origin}/portal/sign-in`,
+		})
+
+		if (resetError) {
+			setError(resetError.message)
+		} else {
+			setResetSent(true)
+		}
+		setLoading(false)
 	}
 
 	return (
@@ -55,6 +97,20 @@ function SignInPage() {
 						Access your research dossiers and engagement history.
 					</p>
 				</div>
+
+				{/* Error message */}
+				{error && (
+					<div className="mb-4 p-3 border border-signal/30 bg-signal-bg text-signal text-xs font-mono text-center">
+						{error}
+					</div>
+				)}
+
+				{/* Reset sent message */}
+				{resetSent && (
+					<div className="mb-4 p-3 border border-emerald/30 bg-emerald/5 text-emerald text-xs font-mono text-center">
+						Password reset link sent to {email}
+					</div>
+				)}
 
 				{/* Sign In Card */}
 				<div
@@ -91,12 +147,16 @@ function SignInPage() {
 							/>
 						</div>
 						<div className="flex justify-end">
-							<a href="#" className="text-xs text-dim hover:text-secondary transition-colors">
+							<button
+								type="button"
+								onClick={handleForgotPassword}
+								className="text-xs text-dim hover:text-secondary transition-colors"
+							>
 								Forgot password?
-							</a>
+							</button>
 						</div>
-						<button type="submit" className="btn-signal w-full px-7 py-3 text-sm">
-							Sign In
+						<button type="submit" disabled={loading} className="btn-signal w-full px-7 py-3 text-sm disabled:opacity-50">
+							{loading ? 'Signing in...' : 'Sign In'}
 						</button>
 					</form>
 				</div>

@@ -1,14 +1,15 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useEffect, useRef, useState } from 'react'
 import { BulwarkIcon } from '~/components/bulwark-icon'
+import { getSupabase } from '~/lib/supabase'
 
 const ROLE_OPTIONS = [
+	'Solo Dev / Indie Hacker',
 	'Founder / CEO',
-	'Investor / VC',
 	'Product Lead',
-	'Strategy / Biz Dev',
+	'Investor / VC',
 	'Consultant / Advisor',
-	'Researcher / Analyst',
+	'Agency / Freelancer',
 ] as const
 
 export const Route = createFileRoute('/portal/onboarding')({
@@ -31,9 +32,12 @@ function OnboardingPage() {
 	const [step, setStep] = useState<Step>('email')
 	const [email, setEmail] = useState('')
 	const [fullName, setFullName] = useState('')
+	const [password, setPassword] = useState('')
 	const [roleSelection, setRoleSelection] = useState('')
 	const [customRole, setCustomRole] = useState('')
 	const [roleDropdownOpen, setRoleDropdownOpen] = useState(false)
+	const [loading, setLoading] = useState(false)
+	const [error, setError] = useState('')
 	const dropdownRef = useRef<HTMLDivElement>(null)
 
 	const role = roleSelection === 'Other' ? customRole : roleSelection
@@ -51,13 +55,51 @@ function OnboardingPage() {
 	function handleEmailSubmit(e: React.FormEvent) {
 		e.preventDefault()
 		if (!email) return
+		setError('')
 		setStep('profile')
 	}
 
-	function handleProfileSubmit(e: React.FormEvent) {
+	async function handleProfileSubmit(e: React.FormEvent) {
 		e.preventDefault()
-		if (!fullName || !role) return
+		if (!fullName || !role || !password) return
+		if (password.length < 8) {
+			setError('Password must be at least 8 characters.')
+			return
+		}
+
+		setLoading(true)
+		setError('')
+
+		const { data, error: signUpError } = await getSupabase().auth.signUp({
+			email,
+			password,
+			options: {
+				data: { full_name: fullName, role },
+				emailRedirectTo: `${window.location.origin}/portal/callback`,
+			},
+		})
+
+		if (signUpError) {
+			setError(signUpError.message)
+			setLoading(false)
+			return
+		}
+
+		setLoading(false)
 		setStep('confirmation')
+	}
+
+	async function handleResendConfirmation() {
+		setLoading(true)
+		setError('')
+		const { error: resendError } = await getSupabase().auth.resend({
+			type: 'signup',
+			email,
+		})
+		if (resendError) {
+			setError(resendError.message)
+		}
+		setLoading(false)
 	}
 
 	return (
@@ -106,6 +148,13 @@ function OnboardingPage() {
 						</div>
 					))}
 				</div>
+
+				{/* Error message */}
+				{error && (
+					<div className="mb-4 p-3 border border-signal/30 bg-signal-bg text-signal text-xs font-mono text-center">
+						{error}
+					</div>
+				)}
 
 				{/* Step 1: Email */}
 				{step === 'email' && (
@@ -245,16 +294,31 @@ function OnboardingPage() {
 										/>
 									)}
 								</div>
+								<div>
+									<label htmlFor="password" className="block font-mono text-[10px] text-dim uppercase tracking-wider mb-2">
+										Password
+									</label>
+									<input
+										id="password"
+										type="password"
+										required
+										minLength={8}
+										placeholder="Min 8 characters"
+										value={password}
+										onChange={(e) => setPassword(e.target.value)}
+										className="w-full px-4 py-3 bg-surface border border-border text-ink text-sm placeholder:text-dim focus:outline-none focus:border-signal/50 transition-colors"
+									/>
+								</div>
 								<div className="flex gap-3 mt-2">
 									<button
 										type="button"
-										onClick={() => setStep('email')}
+										onClick={() => { setStep('email'); setError('') }}
 										className="btn-outline px-5 py-3 text-sm flex-1"
 									>
 										Back
 									</button>
-									<button type="submit" className="btn-signal px-7 py-3 text-sm flex-[2]">
-										Continue
+									<button type="submit" disabled={loading} className="btn-signal px-7 py-3 text-sm flex-[2] disabled:opacity-50">
+										{loading ? 'Creating account...' : 'Create Account'}
 									</button>
 								</div>
 							</form>
@@ -271,24 +335,25 @@ function OnboardingPage() {
 								<span className="text-secondary">inbox</span>
 							</h1>
 							<p className="text-sm text-secondary">
-								We sent a sign-in link to
+								We sent a confirmation link to
 							</p>
 						</div>
 
 						<div className="bp-card p-8 text-center animate-fade-up" style={{ animationDelay: '0.1s' }}>
 							<div className="text-ink font-medium mb-6">{email}</div>
 							<p className="text-xs text-dim leading-relaxed mb-6">
-								Click the link in the email to access your client portal. The link expires in 15 minutes.
+								Click the link in the email to verify your account and access your client portal. The link expires in 24 hours.
 							</p>
 							<div className="h-px bg-border mb-6" />
 							<p className="text-xs text-dim">
 								Didn't receive it?{' '}
 								<button
 									type="button"
-									onClick={() => setStep('confirmation')}
-									className="text-ink hover:text-signal transition-colors"
+									disabled={loading}
+									onClick={handleResendConfirmation}
+									className="text-ink hover:text-signal transition-colors disabled:opacity-50"
 								>
-									Resend link
+									{loading ? 'Sending...' : 'Resend link'}
 								</button>
 							</p>
 						</div>

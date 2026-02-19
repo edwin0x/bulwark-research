@@ -13,6 +13,9 @@
 	--color-ghost: #d5d5db;
 	--color-signal: #e03e3e;
 	--color-signal-bg: #fef2f2;
+	--color-amber: #d9940a;
+	--color-cyan: #0089a8;
+	--color-emerald: #2d8a3e;
 
 	/* Typography */
 	--font-display: "Instrument Sans", "Arial Narrow", sans-serif;

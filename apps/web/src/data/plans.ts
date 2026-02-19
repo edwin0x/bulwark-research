@@ -14,6 +14,8 @@ export interface Plan {
 	badge?: string
 	/** Show "Launch only" label under price */
 	launchOnly?: boolean
+	/** Link for the CTA button (internal route) */
+	ctaLink?: string
 }
 
 export const plans: Plan[] = [
@@ -30,6 +32,7 @@ export const plans: Plan[] = [
 			'Downloadable PDF dossier',
 		],
 		cta: 'Hire Us — Free',
+		ctaLink: '/portal/onboarding',
 		featured: false,
 		freeForNow: true,
 	},

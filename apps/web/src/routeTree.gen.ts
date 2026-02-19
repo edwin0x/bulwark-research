@@ -19,8 +19,12 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConfidentialityRouteImport } from './routes/confidentiality'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PortalIndexRouteImport } from './routes/portal/index'
 import { Route as PortalSignInRouteImport } from './routes/portal/sign-in'
 import { Route as PortalOnboardingRouteImport } from './routes/portal/onboarding'
+import { Route as PortalCallbackRouteImport } from './routes/portal/callback'
+import { Route as PortalEngagementsNewRouteImport } from './routes/portal/engagements/new'
+import { Route as PortalEngagementsIdRouteImport } from './routes/portal/engagements/$id'
 
 const YcRoute = YcRouteImport.update({
   id: '/yc',
@@ -72,6 +76,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalIndexRoute = PortalIndexRouteImport.update({
+  id: '/portal/',
+  path: '/portal/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortalSignInRoute = PortalSignInRouteImport.update({
   id: '/portal/sign-in',
   path: '/portal/sign-in',
@@ -80,6 +89,21 @@ const PortalSignInRoute = PortalSignInRouteImport.update({
 const PortalOnboardingRoute = PortalOnboardingRouteImport.update({
   id: '/portal/onboarding',
   path: '/portal/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalCallbackRoute = PortalCallbackRouteImport.update({
+  id: '/portal/callback',
+  path: '/portal/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalEngagementsNewRoute = PortalEngagementsNewRouteImport.update({
+  id: '/portal/engagements/new',
+  path: '/portal/engagements/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalEngagementsIdRoute = PortalEngagementsIdRouteImport.update({
+  id: '/portal/engagements/$id',
+  path: '/portal/engagements/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -94,8 +118,12 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/yc': typeof YcRoute
+  '/portal/callback': typeof PortalCallbackRoute
   '/portal/onboarding': typeof PortalOnboardingRoute
   '/portal/sign-in': typeof PortalSignInRoute
+  '/portal/': typeof PortalIndexRoute
+  '/portal/engagements/$id': typeof PortalEngagementsIdRoute
+  '/portal/engagements/new': typeof PortalEngagementsNewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -108,8 +136,12 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/yc': typeof YcRoute
+  '/portal/callback': typeof PortalCallbackRoute
   '/portal/onboarding': typeof PortalOnboardingRoute
   '/portal/sign-in': typeof PortalSignInRoute
+  '/portal': typeof PortalIndexRoute
+  '/portal/engagements/$id': typeof PortalEngagementsIdRoute
+  '/portal/engagements/new': typeof PortalEngagementsNewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -123,8 +155,12 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/yc': typeof YcRoute
+  '/portal/callback': typeof PortalCallbackRoute
   '/portal/onboarding': typeof PortalOnboardingRoute
   '/portal/sign-in': typeof PortalSignInRoute
+  '/portal/': typeof PortalIndexRoute
+  '/portal/engagements/$id': typeof PortalEngagementsIdRoute
+  '/portal/engagements/new': typeof PortalEngagementsNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -139,8 +175,12 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms'
     | '/yc'
+    | '/portal/callback'
     | '/portal/onboarding'
     | '/portal/sign-in'
+    | '/portal/'
+    | '/portal/engagements/$id'
+    | '/portal/engagements/new'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -153,8 +193,12 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms'
     | '/yc'
+    | '/portal/callback'
     | '/portal/onboarding'
     | '/portal/sign-in'
+    | '/portal'
+    | '/portal/engagements/$id'
+    | '/portal/engagements/new'
   id:
     | '__root__'
     | '/'
@@ -167,8 +211,12 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms'
     | '/yc'
+    | '/portal/callback'
     | '/portal/onboarding'
     | '/portal/sign-in'
+    | '/portal/'
+    | '/portal/engagements/$id'
+    | '/portal/engagements/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -182,8 +230,12 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   YcRoute: typeof YcRoute
+  PortalCallbackRoute: typeof PortalCallbackRoute
   PortalOnboardingRoute: typeof PortalOnboardingRoute
   PortalSignInRoute: typeof PortalSignInRoute
+  PortalIndexRoute: typeof PortalIndexRoute
+  PortalEngagementsIdRoute: typeof PortalEngagementsIdRoute
+  PortalEngagementsNewRoute: typeof PortalEngagementsNewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -258,6 +310,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/': {
+      id: '/portal/'
+      path: '/portal'
+      fullPath: '/portal/'
+      preLoaderRoute: typeof PortalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portal/sign-in': {
       id: '/portal/sign-in'
       path: '/portal/sign-in'
@@ -270,6 +329,27 @@ declare module '@tanstack/react-router' {
       path: '/portal/onboarding'
       fullPath: '/portal/onboarding'
       preLoaderRoute: typeof PortalOnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/callback': {
+      id: '/portal/callback'
+      path: '/portal/callback'
+      fullPath: '/portal/callback'
+      preLoaderRoute: typeof PortalCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/engagements/new': {
+      id: '/portal/engagements/new'
+      path: '/portal/engagements/new'
+      fullPath: '/portal/engagements/new'
+      preLoaderRoute: typeof PortalEngagementsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/engagements/$id': {
+      id: '/portal/engagements/$id'
+      path: '/portal/engagements/$id'
+      fullPath: '/portal/engagements/$id'
+      preLoaderRoute: typeof PortalEngagementsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -286,8 +366,12 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   YcRoute: YcRoute,
+  PortalCallbackRoute: PortalCallbackRoute,
   PortalOnboardingRoute: PortalOnboardingRoute,
   PortalSignInRoute: PortalSignInRoute,
+  PortalIndexRoute: PortalIndexRoute,
+  PortalEngagementsIdRoute: PortalEngagementsIdRoute,
+  PortalEngagementsNewRoute: PortalEngagementsNewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
